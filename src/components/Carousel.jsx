@@ -44,17 +44,17 @@ function Carousel() {
     Aos.init({ duration: 1000 });
     Aos.refresh();
   }, [index]); // Refresh AOS whenever the index changes
-
   return (
     <div
 
       {...handlers} // Attach swipe handlers
-      className="relative group w-full overflow-hidden"
+      className="relative group duration-300 w-full  overflow-hidden"
     >
       <div className="relative bg-black flex">
 
         {/* Slides */}
         {slides.map((slide) => (
+
 
           <div
           style={{backgroundImage:`url(${slide?.bgimg})`}}
@@ -67,14 +67,14 @@ function Carousel() {
           >
             <div className="h-full w-full bg-[rgba(0,0,0,0.3)] absolute top-0 flex justify-center items-center">
 <div>
-                <h2 className="md:text-4xl text-3xl text-white text-center font-[300] md:mt-7 mt-4">
+                <h2 className={` ${slide?.stylingh2} text-white text-center font-[300] md:mt-7 mt-4`}>
                 {slide?.h2}
               </h2>
               <h1 
                 data-aos="zoom-in"
                 data-aos-duration="700"
                 data-aos-delay="1000"
-                className={`md:text-8xl text-5xl text-white  text-center font-[500] md:mt-7 mt-4 uppercase`}
+                className={`${slide?.stylingh1} text-white  text-center font-[500] md:mt-7 mt-4 uppercase`}
               >
                 {slide?.h1}
               </h1>
@@ -82,7 +82,7 @@ function Carousel() {
                 data-aos="fade-left"
                 data-aos-duration="700"
                 data-aos-delay="1500"
-                className="md:text-3xl text-xl text-white text-center font-[400] md:mt-7 mt-4 font-palywrite"
+                className={` ${slide?.stylingh3} text-white text-center font-[400] md:mt-7 mt-4 font-palywrite`}
               >
                 {slide?.h3}
               </h3>
@@ -95,7 +95,7 @@ function Carousel() {
 
       {/* Left Navigation */}
       <div
-        className="absolute h-full w-[50px] bg-slate-500 left-0 top-0 hidden group-hover:flex justify-center items-center text-3xl text-white cursor-pointer"
+        className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] left-0 top-0 hidden group-hover:flex justify-center items-center text-3xl text-white cursor-pointer"
         onClick={handlePrevious}
       >
         <i className="fa-solid fa-chevron-left"></i>
@@ -103,7 +103,7 @@ function Carousel() {
 
       {/* Right Navigation */}
       <div
-        className="absolute h-full w-[50px] bg-slate-500 right-0 top-0 hidden group-hover:flex justify-center items-center text-3xl text-white cursor-pointer"
+        className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] right-0 top-0 hidden group-hover:flex justify-center items-center  text-3xl text-white cursor-pointer"
         onClick={handleNext}
       >
         <i className="fa-solid fa-chevron-right"></i>
@@ -126,6 +126,9 @@ const slides = [
     h1:"Al Masroor",
     h3:"A Home Away From Home",
     bgimg:"https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054_1280.jpg",
+    stylingh2 : "md:text-4xl text-3xl",
+    stylingh1:"md:text-8xl text-5xl",
+    stylingh3:"md:text-3xl text-xl"
   },
 
   { id: 2, content: "Slide 2"  ,
@@ -133,6 +136,12 @@ const slides = [
     h2:"Especially Designed for",
     h3:"Your perfect space to live, learn, and grow.",
     bgimg:"https://images.unsplash.com/photo-1515736076039-a3ca66043b27?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmVzc2lvbmFsc3xlbnwwfHwwfHx8MA%3D%3D",
+    stylingh2 : "md:text-4xl text-[20px]",
+    stylingh1:"md:text-7xl text-4xl",
+    stylingh3:"md:text-3xl text-[17px]",
+
+
+
 
 
 
