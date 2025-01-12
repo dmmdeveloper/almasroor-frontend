@@ -55,8 +55,7 @@ const cards = [
         text:"Clean Environment",
         img:"https://res.cloudinary.com/dtqli9uge/image/upload/v1736707526/786-al-masroor/iwzijg3aqhfjlsoav4o3.webp",
         gifs :"https://res.cloudinary.com/dtqli9uge/image/upload/v1736711075/786-al-masroor/siob00murjfx40hjov0j.gif",
-        style :" text-[25px] md:text-[27px] "
-    
+        style :" text-[25px] md:text-[27px]"
     },
 {
     id: 2,
