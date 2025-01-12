@@ -86,6 +86,9 @@ function Carousel() {
               >
                 {slide?.h3}
               </h3>
+
+
+
               </div>
 
             </div>
@@ -102,11 +105,11 @@ function Carousel() {
       </div>
 
       {/* Right Navigation */}
-      <div
-        className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] right-0 top-0 hidden group-hover:flex justify-center items-center  text-3xl text-white cursor-pointer"
+      <div className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] right-0 top-0 hidden group-hover:flex justify-center items-center  text-3xl text-white cursor-pointer"
         onClick={handleNext}
       >
-        <i className="fa-solid fa-chevron-right"></i>
+         <i className="fa-solid fa-chevron-right"></i>
+
       </div>
     </div>
   );
@@ -125,19 +128,30 @@ const slides = [
     h2:" Welcome To ",
     h1:"Al Masroor",
     h3:"A Home Away From Home",
-    bgimg:"https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054_1280.jpg",
+    bgimg:"../../public/room.jpg",
     stylingh2 : "md:text-4xl text-3xl",
     stylingh1:"md:text-8xl text-5xl",
     stylingh3:"md:text-3xl text-xl"
   },
 
-  { id: 2, content: "Slide 2"  ,
+  { id: 2, 
     h1:"Professionals",
     h2:"Especially Designed for",
     h3:"Your perfect space to live, learn, and grow.",
-    bgimg:"https://images.unsplash.com/photo-1515736076039-a3ca66043b27?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmVzc2lvbmFsc3xlbnwwfHwwfHx8MA%3D%3D",
+    bgimg:"../../public/Professtional.avif",
     stylingh2 : "md:text-4xl text-[20px]",
     stylingh1:"md:text-7xl text-4xl",
+    stylingh3:"md:text-3xl text-[17px]",
+   },
+
+  {
+     id: 3, content: "Slide 3",
+    bgimg:"https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwdGVjbm9sb2d5fGVufDB8fDB8fHww",
+    h2:"We Provides",
+    h1:"Modern Facilities ",
+    h3:"Comfortable Living, Affordable Prices",
+    stylingh1:"md:text-7xl text-4xl",
+    stylingh2 : "md:text-4xl text-[20px]",
     stylingh3:"md:text-3xl text-[17px]",
 
 
@@ -145,10 +159,6 @@ const slides = [
 
 
 
-   },
-  {
-     id: 3, content: "Slide 3",
-    bgimg:"https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054_1280.jpg",
      },
 
 ];
