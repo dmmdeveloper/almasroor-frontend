@@ -5,16 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useSwipeable } from "react-swipeable";
-
+import img1 from "./room.jpg";
+import img2 from "./Professtional.avif"
 
 
 function Carousel() {
-  // const slides = [
-  //   { id: 1, h1: "Welcome", h2: "To Slide 1", h3: "Enjoy the journey" },
-  //   { id: 2, h1: "Hello", h2: "To Slide 2", h3: "Explore the world" },
-  //   { id: 3, h1: "Greetings", h2: "To Slide 3", h3: "Discover the magic" },
-  //   { id: 4, h1: "Hi", h2: "To Slide 4", h3: "Find your way" },
-  // ];
+
 
   const [index, setIndex] = useState(1); // Track the current slide index
   const [direction, setDirection] = useState("next"); // Track slide direction
@@ -123,12 +119,13 @@ function Carousel() {
 
 const slides = [
 
+
   { id: 1, 
     content: "Slide 1" ,
     h2:" Welcome To ",
     h1:"Al Masroor",
     h3:"A Home Away From Home",
-    bgimg:"../../public/room.jpg",
+    bgimg:img1,
     stylingh2 : "md:text-4xl text-3xl",
     stylingh1:"md:text-8xl text-5xl",
     stylingh3:"md:text-3xl text-xl"
@@ -138,7 +135,7 @@ const slides = [
     h1:"Professionals",
     h2:"Especially Designed for",
     h3:"Your perfect space to live, learn, and grow.",
-    bgimg:"../../public/Professtional.avif",
+    bgimg:img2,
     stylingh2 : "md:text-4xl text-[20px]",
     stylingh1:"md:text-7xl text-4xl",
     stylingh3:"md:text-3xl text-[17px]",
@@ -153,12 +150,6 @@ const slides = [
     stylingh1:"md:text-7xl text-4xl",
     stylingh2 : "md:text-4xl text-[20px]",
     stylingh3:"md:text-3xl text-[17px]",
-
-
-
-
-
-
      },
 
 ];
