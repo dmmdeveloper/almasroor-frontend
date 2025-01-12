@@ -18,7 +18,8 @@ export default {
       },
       fontFamily:{
         sans : ["Noto Sans", "serif;"],
-        arboret : ["Noto Sans", "serif"]
+        arboret : ["Noto Sans", "serif"],
+        palywrite : ["Playwrite AU SA", "serif"]
       }
     },
   },

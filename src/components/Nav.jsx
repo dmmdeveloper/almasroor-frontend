@@ -5,6 +5,7 @@ export default function Nav() {
 
     const stars = [0,1,2,3,4]
   return (<>
+
 <nav className="h-[150px] md:h-[170px]  flex justify-between md:flex-col items-center  w-full bg-black">
 
 {/* Logo Portion */}
@@ -34,7 +35,7 @@ export default function Nav() {
 </div>
 
 {/* Links BTN Mobile */}
-<button className='h-[50px] w-[50px] bg-halfBlack  mr-4 text-[30px] rounded-md md:hidden ' ><i class="fa-solid fa-bars-staggered text-white "></i></button>
+<button className='h-[50px] w-[50px] bg-[#727272]  mr-4 text-[30px]  rounded-sm md:hidden ' ><i class="fa-solid fa-bars-staggered text-appWhite  "></i></button>
 
 {/* Links Portion Desktop */}
 <div className=" text-white6 text-[25px] mb-2 mt-4 hidden md:flex justify-center items-center ">
@@ -58,7 +59,10 @@ export default function Nav() {
 
 
 
-</nav>  
+</nav> 
+
+
+
   </>
   )
 }
