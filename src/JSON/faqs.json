@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "question": "What is the rent structure?",
+      "answer": "The rent structure depends on the type of room. Shared rooms start from $200 per month, while private rooms are $400 per month."
+    },
+    {
+      "id": 2,
+      "question": "Is electricity included in the rent?",
+      "answer": "Yes, electricity is available 24/7 and is included in the rent with no additional charges."
+    },
+    {
+      "id": 3,
+      "question": "What facilities are available in the hostel?",
+      "answer": "The hostel offers Wi-Fi, filtered water, a chill environment, prime location, CCTV, parking, and a clean environment."
+    },
+    {
+      "id": 4,
+      "question": "What are the security arrangements?",
+      "answer": "The hostel has 24/7 CCTV surveillance and an alert team available at all times to ensure your safety."
+    },
+    {
+      "id": 5,
+      "question": "Are meals provided in the hostel?",
+      "answer": "Meals are not included in the rent, but there is a shared kitchen available for cooking, and nearby dining options are accessible."
+    },
+    {
+      "id": 6,
+      "question": "Is parking space available?",
+      "answer": "Yes, there is a designated parking area available for both two-wheelers and four-wheelers."
+    }
+  ]
+  

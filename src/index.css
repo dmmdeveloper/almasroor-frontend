@@ -71,6 +71,7 @@ background-repeat: no-repeat;
 }
 
 .mobile-nav{
+
   height: 300px;
   width: 250px;
   background-color: #727272;
@@ -126,4 +127,18 @@ background-repeat: no-repeat;
 }
 
 
+
+
+
+.faq-ans{
+
+  display: none;
+}
+
+
+.faq-ans-open{
+
+  display: block;  
+  animation: faq .3s ease-in;
+}
 

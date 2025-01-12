@@ -45,9 +45,9 @@ useEffect(()=>{
     Aos.init({ duration: 1000 });
 
     setTimeout(()=>{
-      handleNext()
+      handleNext(); 
     } , 5000);
-  }, [index]); // Refresh AOS whenever the index changes
+  }, []); // Refresh AOS whenever the index changes
   return (
     <div
 

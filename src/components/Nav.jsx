@@ -95,7 +95,7 @@ useEffect(()=>{
     showNav? 
 <div className="h-screen w-full bg-[#0000002c] z-10 fixed top-0">
 
-<div ref={navRef} className={`${showNav?"mobile-nav-open":"mobile-nav"}`}>
+<div ref={navRef} className={`${showNav?"mobile-nav-open":"mobile-nav"} z-40 `}>
 
 <ul className='text-appWhite z-50 p-3 flex items-center w-full flex-col gap-5 ' >
 {

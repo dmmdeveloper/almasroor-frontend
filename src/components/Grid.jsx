@@ -9,14 +9,18 @@ export default function Grid() {
 {
     cards.map((card,i)=>{
 return(<>
-<div className="h-[300px]">
-<figure className='p-1' >
+<div key={card?.id} className="h-[300px] p-1">
+<figure  className='bg-halfBlack'>
     <img className='h-[240px] w-full' src={card?.img} alt="" />
 </figure>
 <div className=" flex gap-3 h-[60px] ">
 {/* gif */}
-<figure className='h-full flex items-center' >
+
+<figure className='h-full  flex items-center' >
+    <div className="md:h-[50px] md:w-[50px] h-[40px] w-[40px]  rounded-full bg-halfYellow">
 <img className='md:h-[50px] md:w-[50px] h-[40px] w-[40px]  rounded-full' src={card?.gifs} alt="" />
+
+    </div>
 </figure>
 
 <div className="h-full  flex flex-col justify-center items-center ">
@@ -29,11 +33,6 @@ return(<>
 
     })
 }
-
-
-
-
-
 </div>
 </>  )
 }
