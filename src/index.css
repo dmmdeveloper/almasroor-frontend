@@ -77,14 +77,14 @@ background-repeat: no-repeat;
   position: fixed;
   left: 50%;
   top: -200%;
-  z-index: 30;
+  z-index: 6;
   transform: translate(-50% , -50%);
-  animation: clzNav .1s linear;
+  animation: clzNav .2s linear;
 }
 
 
+
 .mobile-nav-open{
-  
   height: 300px;
   width: 250px;
   background-color: #727272;
@@ -99,11 +99,11 @@ background-repeat: no-repeat;
 @keyframes clzNav {
   0%{
     top: 50%;
-    opacity: 0;
+    opacity: 1;
   }
   100%{
     top: -100%;
-    opacity: 1;
+    opacity: 0;
     
 
   }

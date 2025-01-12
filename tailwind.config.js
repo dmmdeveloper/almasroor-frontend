@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors:{
+
         appYellow :"var(--yellow)",
         white6 : "var(--white-op6)",
         white7 : "var(#ffffffb3)",
@@ -21,6 +22,10 @@ export default {
         arboret : ["Noto Sans", "serif"],
         palywrite : ["Playwrite AU SA", "serif"],
         merriweather :["Merriweather", "serif"]
+      },
+      screens:{
+        xs: "480px",
+        sml : "750px",
       }
     },
   },
