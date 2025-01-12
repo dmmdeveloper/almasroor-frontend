@@ -12,6 +12,7 @@ import img2 from "./Professtional.avif"
 function Carousel() {
 
 
+
   const [index, setIndex] = useState(1); // Track the current slide index
   const [direction, setDirection] = useState("next"); // Track slide direction
 
@@ -94,14 +95,14 @@ function Carousel() {
 
       {/* Left Navigation */}
       <div
-        className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] left-0 top-0 hidden group-hover:flex justify-center items-center text-3xl text-white cursor-pointer"
+        className="absolute h-0 md:h-full   w-0 md:w-[50px] hover:bg-[#0000005f] bg-[#00000030] left-0 top-0 hidden group-hover:flex justify-center items-center md:text-3xl text-[0px] text-white cursor-pointer"
         onClick={handlePrevious}
       >
         <i className="fa-solid fa-chevron-left"></i>
       </div>
 
       {/* Right Navigation */}
-      <div className="absolute h-full  w-[50px] hover:bg-[#0000005f] bg-[#00000030] right-0 top-0 hidden group-hover:flex justify-center items-center  text-3xl text-white cursor-pointer"
+      <div className="absolute md:h-full h-0  md:w-[50px] w-0 hover:bg-[#0000005f] bg-[#00000030] right-0 top-0 hidden group-hover:flex justify-center items-center  md:text-3xl text-[0px] text-white cursor-pointer"
         onClick={handleNext}
       >
          <i className="fa-solid fa-chevron-right"></i>
@@ -110,11 +111,6 @@ function Carousel() {
     </div>
   );
 }
-
-
-
-
-
 
 
 const slides = [
@@ -153,10 +149,6 @@ const slides = [
      },
 
 ];
-
-
-
-
 
 
 

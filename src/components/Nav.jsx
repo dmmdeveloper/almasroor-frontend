@@ -1,12 +1,36 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom"
 
 export default function Nav() {
 
-    const stars = [0,1,2,3,4]
+    const [showNav , setShowNav]=useState(false);
+    const navRef = useRef("");
+    const btnRef = useRef("")
+    const stars = [0,1,2,3,4];
+
+
+const clzNavClickOutside = (e)=>{
+
+if(navRef.current && btnRef.current && !(navRef.current.contains(e.target) || btnRef.current.contains(e.target)))  {
+    setShowNav(false);
+}
+}
+
+useEffect(()=>{
+    window.addEventListener("touchstart" , clzNavClickOutside)
+    window.addEventListener("mousedown", clzNavClickOutside)
+} , [showNav])
+
+
+
+
+
+
+
   return (<>
 
 <nav className="h-[150px] md:h-[170px]  flex justify-between md:flex-col items-center  w-full bg-black">
+
 
 {/* Logo Portion */}
 
@@ -35,10 +59,18 @@ export default function Nav() {
 </div>
 
 {/* Links BTN Mobile */}
-<button className='h-[50px] w-[50px] bg-[#727272]  mr-4 text-[30px]  rounded-sm md:hidden ' ><i class="fa-solid fa-bars-staggered text-appWhite  "></i></button>
+<button ref={btnRef} onClick={()=>setShowNav(!showNav)} className={`h-[50px] z-30 w-[50px] ${showNav ? "bg-[#2d2c2c]":"bg-[#727272]"}   mr-4 text-[30px]  rounded-sm md:hidden `} >
+    {
+        showNav ?
+        <i class="fa-solid fa-xmark text-appWhite"></i>:
+        <i class="fa-solid fa-bars-staggered text-appWhite  "></i>
+    }
+    
+    </button>
 
 {/* Links Portion Desktop */}
-<div className=" text-white6 text-[25px] mb-2 mt-4 hidden md:flex justify-center items-center ">
+<div  className=" text-white6 text-[25px] mb-2 mt-4 hidden md:flex justify-center items-center ">
+
 
 <ul className='flex justify-center items-center gap-9' >
 
@@ -56,10 +88,37 @@ export default function Nav() {
     </ul>    
 <div className="text-appYellow ml-9"><i class="fa-brands fa-whatsapp"></i></div>
 </div>
-
-
-
 </nav> 
+
+{/* dark */}
+{
+    showNav? 
+<div className="h-screen w-full bg-[#0000002c] z-10 fixed top-0">
+
+<div ref={navRef} className={`${showNav?"mobile-nav-open":"mobile-nav"}`}>
+
+<ul className='text-appWhite z-50 p-3 flex items-center w-full flex-col gap-5 ' >
+{
+    Links.map((l,i)=>{
+        return(<>
+        
+        <Link key={l.id} to={l.to} ><li className='font-merriweather text-2xl' >{l.text}</li></Link>
+        </>)
+    })
+}
+
+
+</ul>
+
+<div className=" mt-3 text-center ">
+<Link  className='bg-appYellow text-white px-5 py-2 rounded-sm text-xl'  > <i class="fa-brands fa-whatsapp"></i> Chat </Link>
+</div>
+
+
+</div>
+</div>
+:""
+}
 
 
 
