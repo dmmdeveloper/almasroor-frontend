@@ -36,14 +36,14 @@ useEffect(()=>{
 <Slider {...settings}>
 
 
-<div className="h-[450px] relative w-full flex justify-center items-center  carousel-slide ">
+<div className="md:h-[450px] h-[300px] relative w-full flex justify-center items-center  carousel-slide ">
   <div className="h-full w-full absolute top-0 bg-[rgba(0,0,0,0.2)] flex justify-center items-center">
 <div>
 
   <h2 
-     className="md:text-6xl text-3xl text-white text-center font-[300] mt-7 ">WELCOME TO </h2>
-  <h1  data-aos="zoom-in"  data-aos-duration="700" data-aos-delay="1000" className="md:text-8xl text-5xl text-white text-center font-[500] mt-7 uppercase "> Al masroor </h1>
-  <h3  data-aos="fade-left"   data-aos-duration="700" data-aos-delay="1500" className="md:text-3xl text-xl text-white text-center font-[400] mt-7 font-palywrite  "> A Home Away From Home </h3>
+     className="md:text-6xl text-3xl text-white text-center font-[300] md:mt-7 mt-4 ">WELCOME TO </h2>
+  <h1  data-aos="zoom-in"  data-aos-duration="700" data-aos-delay="1000" className="md:text-8xl text-5xl text-white text-center font-[500] md:mt-7 mt-4 uppercase "> Al masroor </h1>
+  <h3  data-aos="fade-left"   data-aos-duration="700" data-aos-delay="1500" className="md:text-3xl text-xl text-white text-center font-[400] md:mt-7  mt-4 font-palywrite  "> A Home Away From Home </h3>
 </div>
   </div>
 </div>
