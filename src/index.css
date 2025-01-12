@@ -23,8 +23,51 @@
 }
 
 .carousel-slide{
+
+
 background-size: cover !important ;    
 background-position: center !important;
-background-image: url("https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054_1280.jpg") !important;
+/* background-image: url("https://cdn.pixabay.com/photo/2021/12/18/06/13/hotel-6878054_1280.jpg") !important; */
 background-repeat: no-repeat;
 }
+
+
+@keyframes slide-in-left {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.5s ease-out forwards;
+  }
+  .zoomIn{
+    animation: zoom .3s linear;
+  }
+
+@keyframes zoom{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform:  scale(1);
+    }
+}
+
+
