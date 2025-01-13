@@ -131,14 +131,14 @@ background-repeat: no-repeat;
 
 
 .faq-ans{
-
   display: none;
+  transition: all .3s linear;
+
 }
 
-
 .faq-ans-open{
-
   display: block;  
   animation: faq .3s ease-in;
+  transition: all .3s linear;
 }
 

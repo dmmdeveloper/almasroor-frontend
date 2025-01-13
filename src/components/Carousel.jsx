@@ -36,18 +36,14 @@ function Carousel() {
     trackMouse: true, // Allow swipe on desktop with mouse drag
   });
 
-useEffect(()=>{
 
-})
-
-  // Initialize and Refresh AOS on Slide Change
   useEffect(() => {
     Aos.init({ duration: 1000 });
-
     setTimeout(()=>{
       handleNext(); 
     } , 5000);
-  }, []); // Refresh AOS whenever the index changes
+  }, []); 
+
   return (
     <div
 
@@ -118,6 +114,7 @@ useEffect(()=>{
     </div>
   );
 }
+
 
 
 const slides = [

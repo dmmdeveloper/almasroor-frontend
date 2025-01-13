@@ -72,6 +72,7 @@ useEffect(()=>{
 <div  className=" text-white6 text-[25px] mb-2 mt-4 hidden md:flex justify-center items-center ">
 
 
+
 <ul className='flex justify-center items-center gap-9' >
 
 
@@ -86,11 +87,10 @@ useEffect(()=>{
 
 
     </ul>    
-<div className="text-appYellow ml-9"><i class="fa-brands fa-whatsapp"></i></div>
+<Link to={"https://wa.me/+923193291955"} className="text-appYellow ml-9"><i class="fa-brands fa-whatsapp"></i></Link>
 </div>
 </nav> 
 
-{/* dark */}
 {
     showNav? 
 <div className="h-screen w-full bg-[#0000002c] z-10 fixed top-0">
@@ -98,6 +98,7 @@ useEffect(()=>{
 <div ref={navRef} className={`${showNav?"mobile-nav-open":"mobile-nav"} z-40 `}>
 
 <ul className='text-appWhite z-50 p-3 flex items-center w-full flex-col gap-5 ' >
+
 {
     Links.map((l,i)=>{
         return(<>
@@ -111,24 +112,13 @@ useEffect(()=>{
 </ul>
 
 <div className=" mt-3 text-center ">
-<Link  className='bg-appYellow text-white px-5 py-2 rounded-sm text-xl'  > <i class="fa-brands fa-whatsapp"></i> Chat </Link>
+<Link to={"https://wa.me/+923193291955"}  className='bg-appYellow text-white px-5 py-2 rounded-sm text-xl'  > <i class="fa-brands fa-whatsapp"></i> Chat </Link>
 </div>
-
 
 </div>
 </div>
 :""
 }
-
-
-
-
-
-
-
-
-
-
   </>
   )
 }

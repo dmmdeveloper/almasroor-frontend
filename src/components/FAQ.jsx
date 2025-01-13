@@ -22,7 +22,7 @@ return(<>
             <h1>
           {faq.question}
             </h1>
-            <button className={` ${index === faq.id ?"-rotate-45 duration-150":"rotate-0 duration-150"} md:text-5xl text-4xl font-[200]`} >+</button>
+            <button className={` select-none ${index === faq.id ?"-rotate-45 duration-150":"rotate-0 duration-150"} md:text-5xl text-4xl font-[200]`} >+</button>
             </div>
         {/* ans */}
         <article className={`${index === faq.id?"faq-ans-open":"faq-ans"} bg-halfBlack text-[20px] p-2 md:text-2xl md:p-3 mt-1`} >
