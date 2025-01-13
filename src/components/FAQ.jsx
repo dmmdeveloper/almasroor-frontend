@@ -12,13 +12,14 @@ export default function FAQ() {
 {
     faqs.map((faq,i)=>{
 
+
+        
 return(<>
 
     {/* item */}
     <div key={faq.id} className="">
         {/* Questions */}
         <div onClick={()=>setIndex(faq.id === index ? null:faq.id)} className='bg-halfBlack p-2 md:p-3 mt-2 text-[20px] md:text-2xl hover:bg-[#3a3939] duration-200 flex justify-between items-center cursor-pointer ' >
-
             <h1>
           {faq.question}
             </h1>

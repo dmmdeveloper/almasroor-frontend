@@ -107,8 +107,6 @@ useEffect(()=>{
         </>)
     })
 }
-
-
 </ul>
 
 <div className=" mt-3 text-center ">
