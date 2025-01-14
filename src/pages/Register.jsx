@@ -49,9 +49,10 @@ export default function Register() {
 
 
 <div className="flex w-full justify-between items-center mt-2 ">
-  <label className='font-abhyalibre w-[55%] text-[20px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant :</label>
+
+  <label className='font-abhyalibre w-auto text-[20px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
   <input
-  className="w-[45%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="w-auto md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
 </div>
@@ -59,7 +60,8 @@ export default function Register() {
 
 <div className="flex w-full justify-between items-center mt-2">
 
-  <label className='font-abhyalibre w-[40%] md:w-[35p%]  flex-1 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name :</label>
+
+  <label className='font-abhyalibre w-[40%] md:w-[35p%]  flex-1 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name </label>
   <input
   className=" w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
@@ -69,7 +71,8 @@ export default function Register() {
 
 <div className="flex w-full justify-between items-center mt-2">
 
-  <label className='font-abhyalibre w-[30%] md:w-[30%] flex-2 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No  :</label>
+
+  <label className='font-abhyalibre w-[30%] md:w-[30%] flex-2 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
   <input
   className=" w-[70%] md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
@@ -78,7 +81,8 @@ export default function Register() {
 </div>
 
 <div className="flex w-full justify-between items-center mt-2">
-  <label className='font-abhyalibre  w-[40%] md:w-[40%] font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form :</label>
+
+  <label className='font-abhyalibre  w-[40%] md:w-[40%] font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form </label>
   <input
   className="md:w-[60%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
