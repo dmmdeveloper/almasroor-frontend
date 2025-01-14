@@ -18,10 +18,12 @@ export default {
         appWhite : "var(--wahite)",
       },
       fontFamily:{
+
         sans : ["Noto Sans", "serif;"],
         arboret : ["Noto Sans", "serif"],
         palywrite : ["Playwrite AU SA", "serif"],
-        merriweather :["Merriweather", "serif"]
+        merriweather :["Merriweather", "serif"],
+        abhyalibre : ["Abhaya Libre", "serif"]
       },
       screens:{
         xs: "480px",
