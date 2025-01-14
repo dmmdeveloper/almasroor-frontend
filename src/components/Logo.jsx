@@ -7,7 +7,7 @@ export default function Logo({styling}) {
   return (
 <>
 
-<div className="h-[150px] bg-slate-400 pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3 md:pt-5 flex-col ">
+<div className="h-[150px]  pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3 md:pt-5 flex-col ">
 
 
 {/* stars */}
