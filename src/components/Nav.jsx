@@ -7,7 +7,6 @@ export default function Nav() {
     const [showNav , setShowNav]=useState(false);
     const navRef = useRef("");
     const btnRef = useRef("")
-    const stars = [0,1,2,3,4];
 
 
 const clzNavClickOutside = (e)=>{
@@ -35,7 +34,7 @@ useEffect(()=>{
 
 {/* Logo Portion */}
 
-<Logo/>
+<Logo />
 
 {/* Links BTN Mobile */}
 <button ref={btnRef} onClick={()=>setShowNav(!showNav)} className={`h-[50px] z-30 w-[50px] ${showNav ? "bg-[#2d2c2c]":"bg-[#727272]"}   mr-4 text-[30px]  rounded-sm md:hidden `} >
