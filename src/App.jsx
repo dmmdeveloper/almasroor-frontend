@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AppContextProvider } from "./context/Appcontext";
 import Home from "./pages/Home";
 import { useEffect } from "react";
+import Register from "./pages/Register";
 
 
 function App(params) {
@@ -20,6 +21,7 @@ return(<>
 
   <Routes>
 <Route path="/" element = {<Home/>}  /> 
+<Route path="/register" element = {<Register/>} />
 
 
   </Routes>
