@@ -3,15 +3,13 @@ import cards from "../JSON/card.json"
 
 export default function Grid() {
   return (<>
-
-
-
 <div class=" min-h-screen h-auto bg-black sm:grid-cols-2 grid xs:grid-cols-1 md:grid-cols-4 gap-4 p-6">
 {
     cards.map((card,i)=>{
 return(<>
 <div key={card?.id} className="h-[300px] p-1">
-<figure  className='bg-halfBlack'>
+
+<figure  className='bg-halfBlack h-[240px] w-full'>
     <img className='h-[240px] w-full' src={card?.img} alt="" />
 </figure>
 <div className=" flex gap-3 h-[60px] ">
