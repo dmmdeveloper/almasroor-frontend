@@ -155,10 +155,13 @@ const handleFileChange2 = (e)=>{
 
 {/* upload Fields */}
 <div className="mt-2 w-full">
-<div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full   cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
+<div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
 {
   cnicName?
-  cnicName
+  (<>
+<input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnicName} readOnly type='text' />   
+  </>)
+  // cnicName
   :
   (<>
     <span  >
@@ -272,8 +275,6 @@ console.log(post);
 />
   </div>
 
-
-
   </div>  
   </>)
   
@@ -284,8 +285,8 @@ function RelativesData() {
 const [cnic1  ,setCnic1] = useState("")
 const [cnic2  ,setCnic2] = useState("")
 
-
-  const realtive1fileRef = useRef("")
+  const realtive1fileRef = useRef("");
+  const realtive2fileRef = useRef("");
 
   return(<>
 <div className="">
@@ -325,9 +326,13 @@ const [cnic2  ,setCnic2] = useState("")
 
 
   <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+
 {
   cnic1 ?
-  cnic1:
+
+<input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic1} readOnly type='text' />   
+
+  :
   (<>
       <span>upload cnic</span>
       <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -347,7 +352,6 @@ const [cnic2  ,setCnic2] = useState("")
 
 
 <div className="flex md:flex-row flex-col ">
-
   <div className='md:w-1/2 flex w-full  items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
   <input
@@ -376,17 +380,17 @@ const [cnic2  ,setCnic2] = useState("")
   </div>
 
 
-  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+  <div key={Math.random()} onClick={(e)=>{ realtive2fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
     {
       cnic2?
-      cnic2:
+      <input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic2} readOnly type='text' />   
+:
       (<>
     <span>upload cnic</span>
     <i class="fa-solid fa-arrow-up-from-bracket"></i>      
       </>)
     }
-
-    <input onChange={(e)=>setCnic2(e.target.files[0].name)} ref={realtive1fileRef} className='hidden' type="file" />
+    <input onChange={(e)=>setCnic2(e.target.files[0].name)} ref={realtive2fileRef} className='hidden' type="file" />
   </div>
 
 </div>
