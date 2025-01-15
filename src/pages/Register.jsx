@@ -99,9 +99,9 @@ function ApplicantData() {
 <div className="flex w-full items-center mt-2 ">
 
 
-  <label className='font-abhyalibre w-auto text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
+  <label className='font-abhyalibre w-[50%] text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
   <input
-  className="w-auto md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="w-[50%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
 </div>
@@ -196,6 +196,7 @@ function ApplicantData() {
 
 function InstitueData() {
 
+
   return(<>
 <div className=" text-xl mt-3 ">
 
@@ -212,9 +213,10 @@ function InstitueData() {
     </div>
 
     <div className='flex gap-1' >
-<p>Studied At</p>
+
+<p className='text-[17px] w-[30%] mt-1' >Studied At</p>
 <input
-  className="w-auto  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="w-[60%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
   </div>
@@ -222,10 +224,10 @@ function InstitueData() {
   
 
 <div className='flex gap-1 mt-2' >
-<p>Institue Contact</p>
+<p className='w-[50%]' >Institue Contact</p>
 <input
-  className="w-[55%] md:w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="text"
+  className="w-[40%] md:w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="number"
 />
   </div>
 
