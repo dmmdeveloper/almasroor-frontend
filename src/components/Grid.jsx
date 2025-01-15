@@ -9,7 +9,7 @@ export default function Grid() {
 return(<>
 <div key={card?.id} className="h-[300px] p-1">
 
-<figure  className='bg-halfBlack h-[240px] w-full'>
+<figure  className='h-[240px] w-full grid-card-figure '>
     <img className='h-[240px] w-full' src={card?.img} alt="" />
 </figure>
 <div className=" flex gap-3 h-[60px] ">
