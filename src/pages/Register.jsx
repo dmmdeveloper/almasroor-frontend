@@ -312,13 +312,10 @@ const [cnic2  ,setCnic2] = useState("")
   type="number"/>
   </div>
 
-  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
-
+  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1">
 {
   cnic1 ?
-
 <input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic1} readOnly type='text' />   
-
   :
   (<>
       <span>upload cnic</span>
@@ -347,7 +344,7 @@ const [cnic2  ,setCnic2] = useState("")
 />
   </div>
 
-  <select  className='bg-halfBlack px-2 md:w-1/2 w-full md:mt-0 mt-3 rounded-2xl' name="" id="">
+  <select  className="bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl" name="" id="">
     <option  value="">Relation</option>
     <option value="Employee">Father</option>
     <option value="Employee">Brother</option>
@@ -366,7 +363,7 @@ const [cnic2  ,setCnic2] = useState("")
   type="number"/>
   </div>
 
-  <div key={Math.random()} onClick={(e)=>{ realtive2fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+  <div key={Math.random()} onClick={(e)=>{ realtive2fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1">
     {
       cnic2?
       <input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic2} readOnly type='text' />   
