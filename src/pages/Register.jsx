@@ -2,11 +2,14 @@ import React, { useRef } from 'react'
 
 
 export default function Register() {
+
+
+
+
+
+
     const stars = [0,1,2,3,4];
 
-
-    const cnicRef = useRef("");
-    const photRef = useRef("")
 
   return (<>
   <div className="min-h-screen h-auto w-full bg-black">
@@ -39,18 +42,64 @@ export default function Register() {
 
 <form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4 ">
 
-<h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
 
-{/* Start Applicant Data Div */}
-<div className=" flex-col md:flex-row flex gap-1">
+<h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
+<ApplicantData/>
+
+<h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
+
+<InstitueData/>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+</>  )
+}
+
+
+
+function ApplicantData() {
+
+
+
+
+    const cnicRef = useRef("");
+    const photRef = useRef("")
+
+  return(<>
+  
+
+
+  <div className=" flex-col md:flex-row flex gap-1">
 
 {/* text fields portion  60% */}
 <div className=" w-full md:w-[60%] mt-5">
 
 
-<div className="flex w-full justify-between items-center mt-2 ">
+<div className="flex w-full items-center mt-2 ">
 
-  <label className='font-abhyalibre w-auto text-[20px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
+
+  <label className='font-abhyalibre w-auto text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
   <input
   className="w-auto md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
@@ -140,33 +189,49 @@ export default function Register() {
 
 
 </div>
+  </>)
+  
+}
 
 
+function InstitueData() {
 
+  return(<>
+<div className=" text-xl mt-3 ">
 
+  <div className=" flex md:flex-row flex-col gap-2">
+    <div >
 
+  <label htmlFor=""> I am </label>
 
+  <select className='bg-halfBlack px-2 rounded-2xl' name="" id="">
+    <option value="">Student</option>
+    <option value="">Employee</option>
+  </select>
+  
+    </div>
 
+    <div className='flex gap-1' >
+<p>Studied At</p>
+<input
+  className="w-auto  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="text"
+/>
+  </div>
+</div>
+  
 
-
-
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div className='flex gap-1 mt-2' >
+<p>Institue Contact</p>
+<input
+  className="w-[55%] md:w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="text"
+/>
   </div>
 
 
-</>  )
+
+  </div>  
+  </>)
+  
 }
