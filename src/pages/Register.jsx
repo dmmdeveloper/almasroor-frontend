@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 
 export default function Register() {
 
+
     const stars = [0,1,2,3,4];
 
   return (<>
@@ -191,6 +192,8 @@ function ApplicantData() {
 
 function InstitueData() {
 
+
+
   const [post , setPost] =  useState("Student")
 console.log(post);
 
@@ -198,10 +201,9 @@ console.log(post);
   return(<>
 <div className=" text-xl mt-3 ">
 
-  <div className=" flex md:flex-row items-center flex-col gap-2">
+  <div className=" flex md:flex-row md:items-center flex-col gap-2">
 
-    <div >
-
+    <div  >
   <label htmlFor=""> I am </label>
 
   <select onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
@@ -238,8 +240,111 @@ console.log(post);
 
 function RelativesData() {
 
+  const realtive1fileRef = useRef("")
+
   return(<>
-  Relatives Data
+<div className="">
+
+<fieldset className='border border-[#B89F80] rounded-sm p-2' >
+  <legend className=' font-arboret  text-xl md:text-xl font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative A.</legend>
+
+
+<div className="flex md:flex-row flex-col ">
+
+  <div className='md:w-1/2 flex w-full  items-center' >
+<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
+  <input
+  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="text"
+/>
+  </div>
+
+  <select  className='bg-halfBlack px-2 md:w-1/2 w-full md:mt-0 mt-3 rounded-2xl' name="" id="">
+    <option  value="">Relation</option>
+    <option value="Employee">Father</option>
+    <option value="Employee">Brother</option>
+  </select>
+
+
+</div>
+
+
+<div className="flex md:flex-row flex-col mt-2 ">
+
+  <div className='md:w-1/2 flex w-full  items-center' >
+<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
+  <input
+  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="number"/>
+  </div>
+
+
+  <div onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+    <span>upload cnic</span>
+    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+    <input ref={realtive1fileRef} className='hidden' type="file" />
+  </div>
+
+</div>
+
+</fieldset>
+
+
+
+
+
+<fieldset className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
+  <legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
+
+
+<div className="flex md:flex-row flex-col ">
+
+  <div className='md:w-1/2 flex w-full  items-center' >
+<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
+  <input
+  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="text"
+/>
+  </div>
+
+  <select  className='bg-halfBlack px-2 md:w-1/2 w-full md:mt-0 mt-3 rounded-2xl' name="" id="">
+    <option  value="">Relation</option>
+    <option value="Employee">Father</option>
+    <option value="Employee">Brother</option>
+  </select>
+
+
+</div>
+
+
+<div className="flex md:flex-row flex-col mt-2 ">
+
+  <div className='md:w-1/2 flex w-full  items-center' >
+<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
+  <input
+  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  type="number"/>
+  </div>
+
+
+  <div onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+    <span>upload cnic</span>
+    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+    <input ref={realtive1fileRef} className='hidden' type="file" />
+  </div>
+
+</div>
+
+</fieldset>
+
+
+
+
+
+
+</div>
+
+
   </>)
 
   
