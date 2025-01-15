@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 
 export default function Register() {
+
 const stars = [0,1,2,3,4];
 
-  return (<>
+return (<>
 
-  <div className="min-h-screen h-auto w-full pb-12 bg-black">
+<div className="min-h-screen h-auto w-full pb-12 bg-black">
 {/* Logo */}
 
 <div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
@@ -35,10 +36,8 @@ const stars = [0,1,2,3,4];
 
 <form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
-
 <h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
 <ApplicantData/>
-
 
 <h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
 <InstitueData/>
@@ -48,8 +47,9 @@ const stars = [0,1,2,3,4];
 
 {/* Submit Form */}
 <div className=" mt-4 text-center ">
-<button type='submit' className='bg-appYellow px-9 py-1 text-xl md:text-2xl rounded-md hover:opacity-90' >Read Terms & Conditions</button>
+<button type='submit' className='bg-appYellow w-[300px] py-1 text-xl md:text-2xl rounded-md hover:opacity-90' >Read Terms & Conditions</button>
 </div>
+
 
 
 </form>
@@ -75,10 +75,13 @@ const stars = [0,1,2,3,4];
 
 function ApplicantData() {
 
+const [cnicName , setCnicName] = useState(null)
+
+
     const cnicRef = useRef("");
     const photRef = useRef("");
 
-    const [photoPreview , setShowPreview] = useState(null);
+    const [photoPreview , setShowPreview] = useState("");
 
         const handleFileChange = (e)=>{
       const file  = e.target?.files[0]
@@ -96,9 +99,11 @@ function ApplicantData() {
       
     }
 
-
-
-
+const handleFileChange2 = (e)=>{
+  console.log(e.target.files[0].name);
+  setCnicName(e.target.files[0].name)
+ 
+}
 
   return(<>
   <div className=" flex-col md:flex-row flex gap-1">
@@ -107,9 +112,8 @@ function ApplicantData() {
 <div className=" w-full md:w-[60%] mt-5">
 
 
+
 <div className="flex w-full items-center mt-2 ">
-
-
   <label className='font-abhyalibre w-[50%] text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
   <input
   className="w-[50%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
@@ -151,18 +155,24 @@ function ApplicantData() {
 
 {/* upload Fields */}
 <div className="mt-2 w-full">
-
 <div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full   cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
-
-  <span  >
+{
+  cnicName?
+  cnicName
+  :
+  (<>
+    <span  >
   upload cnic
   {/* when Field is loaded thed shows the file name */}
   </span>
-
   <i class="fa-solid fa-arrow-up-from-bracket mb-1 text-[20px] "></i>
 
+  </>)
+
+}
+
 </div>
-<input ref={cnicRef} className='hidden' type="file" />
+<input  onChange={handleFileChange2} ref={cnicRef} className='hidden' type="file" />
 </div>
 
 
@@ -209,9 +219,6 @@ function ApplicantData() {
 
 
 </div>
-
-
-
 <input onChange={handleFileChange} type="file" className='hidden' ref={photRef} />
 
 </div>
@@ -274,6 +281,9 @@ console.log(post);
 
 
 function RelativesData() {
+const [cnic1  ,setCnic1] = useState("")
+const [cnic2  ,setCnic2] = useState("")
+
 
   const realtive1fileRef = useRef("")
 
@@ -314,17 +324,25 @@ function RelativesData() {
   </div>
 
 
-  <div onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
-    <span>upload cnic</span>
-    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-    <input ref={realtive1fileRef} className='hidden' type="file" />
+  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+{
+  cnic1 ?
+  cnic1:
+  (<>
+      <span>upload cnic</span>
+      <i class="fa-solid fa-arrow-up-from-bracket"></i>
+  </>)
+}
+    <input onChange={(e)=>setCnic1(e.target.files[0].name)
+    } ref={realtive1fileRef} className='hidden' type="file" />
   </div>
 
 </div>
 
 </fieldset>
 
-<fieldset className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
+<fieldset key={Math.random()} className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
+
   <legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
 
 
@@ -358,10 +376,17 @@ function RelativesData() {
   </div>
 
 
-  <div onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
+    {
+      cnic2?
+      cnic2:
+      (<>
     <span>upload cnic</span>
-    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-    <input ref={realtive1fileRef} className='hidden' type="file" />
+    <i class="fa-solid fa-arrow-up-from-bracket"></i>      
+      </>)
+    }
+
+    <input onChange={(e)=>setCnic2(e.target.files[0].name)} ref={realtive1fileRef} className='hidden' type="file" />
   </div>
 
 </div>
