@@ -50,21 +50,7 @@ return (<>
 <button type='submit' className='bg-appYellow w-[300px] py-1 text-xl md:text-2xl rounded-md hover:opacity-90' >Read Terms & Conditions</button>
 </div>
 
-
-
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
 
   </div>
 
@@ -75,8 +61,8 @@ return (<>
 
 function ApplicantData() {
 
+  
 const [cnicName , setCnicName] = useState(null)
-
 
     const cnicRef = useRef("");
     const photRef = useRef("");
@@ -114,6 +100,7 @@ const handleFileChange2 = (e)=>{
 
 
 <div className="flex w-full items-center mt-2 ">
+
   <label className='font-abhyalibre w-[50%] text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
   <input
   className="w-[50%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
@@ -249,7 +236,7 @@ console.log(post);
   <div className=" flex md:flex-row md:items-center flex-col gap-2">
 
     <div  >
-  <label htmlFor=""> I am </label>
+  <label className='text-[18px] md:text-xl' htmlFor=""> I am </label>
 
   <select onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
     <option value="Student">Student</option>
@@ -257,8 +244,9 @@ console.log(post);
   </select>
     </div>
 
-    <div className='flex gap-1' >
-<p className='text-[17px] w-[30%] mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
+    <div className='flex gap-1 mt-1' >
+
+<p className='text-[18px] md:text-xl w-[30%] mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
 <input
   className="w-[60%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
@@ -267,7 +255,7 @@ console.log(post);
 </div>
   
 <div className='flex gap-1 mt-2' >
-<p className='w-[50%] md:w-[30%]' >{ post=== "Student"?"Institue":"Office" } Contact</p>
+<p className='w-[50%] md:w-[30%] text-[18px] md:text-xl ' >{ post=== "Student"?"Institue":"Office" } Contact</p>
 <input
   className="w-[40%] md:w-[55%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
@@ -282,6 +270,7 @@ console.log(post);
 
 
 function RelativesData() {
+
 const [cnic1  ,setCnic1] = useState("")
 const [cnic2  ,setCnic2] = useState("")
 
@@ -305,25 +294,23 @@ const [cnic2  ,setCnic2] = useState("")
 />
   </div>
 
-  <select  className='bg-halfBlack px-2 md:w-1/2 w-full md:mt-0 mt-3 rounded-2xl' name="" id="">
+  <select  className='bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl' name="" id="">
     <option  value="">Relation</option>
     <option value="Employee">Father</option>
     <option value="Employee">Brother</option>
   </select>
-
 
 </div>
 
 
 <div className="flex md:flex-row flex-col mt-2 ">
 
-  <div className='md:w-1/2 flex w-full  items-center' >
+  <div className='md:w-1/2 flex w-full  mt-2 items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
   <input
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"/>
   </div>
-
 
   <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
 
@@ -370,7 +357,7 @@ const [cnic2  ,setCnic2] = useState("")
 </div>
 
 
-<div className="flex md:flex-row flex-col mt-2 ">
+<div className="flex md:flex-row flex-col mt-3 ">
 
   <div className='md:w-1/2 flex w-full  items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
@@ -378,7 +365,6 @@ const [cnic2  ,setCnic2] = useState("")
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"/>
   </div>
-
 
   <div key={Math.random()} onClick={(e)=>{ realtive2fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer">
     {
