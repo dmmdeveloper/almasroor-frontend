@@ -1,13 +1,11 @@
 import React, { useRef, useState } from 'react'
 
-
 export default function Register() {
-
-
-    const stars = [0,1,2,3,4];
+const stars = [0,1,2,3,4];
 
   return (<>
-  <div className="min-h-screen h-auto w-full bg-black">
+
+  <div className="min-h-screen h-auto w-full pb-12 bg-black">
 {/* Logo */}
 
 <div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
@@ -48,8 +46,10 @@ export default function Register() {
 <h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Relatives Data</h1>
 <RelativesData/>
 
-
-
+{/* Submit Form */}
+<div className=" mt-4 text-center ">
+<button type='submit' className='bg-appYellow px-9 py-1 text-xl md:text-2xl rounded-md hover:opacity-90' >Read Terms & Conditions</button>
+</div>
 
 
 </form>
@@ -71,8 +71,6 @@ export default function Register() {
 
 </>  )
 }
-
-
 
 
 function ApplicantData() {
@@ -193,17 +191,16 @@ function ApplicantData() {
 <div onClick={()=>{ photRef.current.click()}} className="h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 ">
 
 {
-  photoPreview ?
+  photoPreview ? 
+
   <figure>
 <img className='h-[200px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
 </figure>
 :
-
 <div className='h-[200px] w-[150px] flex justify-center items-center flex-col gap-2' >
 <span className='text-xl text-[#ffffffab]' >Photo</span>
-<i class="fa-solid fa-arrow-up-from-bracket text-3xl "></i>
+<i class="fa-solid fa-arrow-up-from-bracket text-3xl "></i> 
 </div>
-
 }
 
 
