@@ -1,21 +1,15 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 
 export default function Register() {
 
-
-
-
-
-
     const stars = [0,1,2,3,4];
-
 
   return (<>
   <div className="min-h-screen h-auto w-full bg-black">
 {/* Logo */}
 
-<div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3 md:pt-5 flex-col ">
+<div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
 
 
 {/* stars */}
@@ -40,17 +34,18 @@ export default function Register() {
 
 <h1 className='text-halfYellow font-arboret  text-center text-2xl md:text-4xl font-[200] uppercase  md:my-4' >registeration form</h1>
 
-<form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4 ">
+<form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
 
 <h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
 <ApplicantData/>
 
-<h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
 
+<h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
 <InstitueData/>
 
-
+<h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Relatives Data</h1>
+<RelativesData/>
 
 
 
@@ -196,25 +191,27 @@ function ApplicantData() {
 
 function InstitueData() {
 
+  const [post , setPost] =  useState("Student")
+console.log(post);
+
 
   return(<>
 <div className=" text-xl mt-3 ">
 
-  <div className=" flex md:flex-row flex-col gap-2">
+  <div className=" flex md:flex-row items-center flex-col gap-2">
+
     <div >
 
   <label htmlFor=""> I am </label>
 
-  <select className='bg-halfBlack px-2 rounded-2xl' name="" id="">
-    <option value="">Student</option>
-    <option value="">Employee</option>
+  <select onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
+    <option value="Student">Student</option>
+    <option value="Employee">Employee</option>
   </select>
-  
     </div>
 
     <div className='flex gap-1' >
-
-<p className='text-[17px] w-[30%] mt-1' >Studied At</p>
+<p className='text-[17px] w-[30%] mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
 <input
   className="w-[60%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
@@ -222,12 +219,12 @@ function InstitueData() {
   </div>
 </div>
   
-
 <div className='flex gap-1 mt-2' >
-<p className='w-[50%]' >Institue Contact</p>
+<p className='w-[50%] md:w-[30%]' >{ post=== "Student"?"Institue":"Office" } Contact</p>
 <input
-  className="w-[40%] md:w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="w-[40%] md:w-[55%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
+  min={0}
 />
   </div>
 
@@ -235,5 +232,15 @@ function InstitueData() {
 
   </div>  
   </>)
+  
+}
+
+
+function RelativesData() {
+
+  return(<>
+  Relatives Data
+  </>)
+
   
 }
