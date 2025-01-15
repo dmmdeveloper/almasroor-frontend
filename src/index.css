@@ -144,11 +144,11 @@ background-repeat: no-repeat;
 }
 
 
+
 .grid-card-figure{
   background: linear-gradient(-45deg, #2D2D2D,  #2d2d2d5e,  rgba(255, 255, 255, 0.169), #2D2D2D);
 	background-size: 400% 400%;
 	animation: gradient 5s ease infinite;
-  border: none;
 }
 
 

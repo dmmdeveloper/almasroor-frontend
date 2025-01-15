@@ -74,18 +74,35 @@ export default function Register() {
 
 
 
+
 function ApplicantData() {
 
-
-
-
     const cnicRef = useRef("");
-    const photRef = useRef("")
+    const photRef = useRef("");
+
+    const [photoPreview , setShowPreview] = useState(null);
+
+        const handleFileChange = (e)=>{
+      const file  = e.target?.files[0]
+      console.log(file);
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = ()=>{
+        setShowPreview(fileReader.result);
+
+      }
+
+      
+
+
+      
+    }
+
+
+
+
 
   return(<>
-  
-
-
   <div className=" flex-col md:flex-row flex gap-1">
 
 {/* text fields portion  60% */}
@@ -171,11 +188,35 @@ function ApplicantData() {
 {/* file field portion  40% */}
 <div className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
 
+
+
 <div onClick={()=>{ photRef.current.click()}} className="h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 ">
+
+{
+  photoPreview ?
+  <figure>
+<img className='h-[200px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
+</figure>
+:
+
+<div className='h-[200px] w-[150px] flex justify-center items-center flex-col gap-2' >
 <span className='text-xl text-[#ffffffab]' >Photo</span>
 <i class="fa-solid fa-arrow-up-from-bracket text-3xl "></i>
 </div>
-<input type="file" className='hidden' ref={photRef} />
+
+}
+
+
+
+
+
+
+</div>
+
+
+
+<input onChange={handleFileChange} type="file" className='hidden' ref={photRef} />
+
 </div>
 
 
@@ -191,9 +232,6 @@ function ApplicantData() {
 
 
 function InstitueData() {
-
-
-
   const [post , setPost] =  useState("Student")
 console.log(post);
 
@@ -289,10 +327,6 @@ function RelativesData() {
 
 </fieldset>
 
-
-
-
-
 <fieldset className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
   <legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
 
@@ -336,11 +370,6 @@ function RelativesData() {
 </div>
 
 </fieldset>
-
-
-
-
-
 
 </div>
 
