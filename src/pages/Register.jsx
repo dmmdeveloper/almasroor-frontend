@@ -94,6 +94,7 @@ if(data){
 }
   } catch (error){ 
     console.log("Member NoT Registered :)", error);
+    toast.error("Member Not Registered \n Some Thing Went Wrong")
   }finally{
     setLoading(false)
   }
