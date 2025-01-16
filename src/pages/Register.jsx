@@ -4,6 +4,47 @@ export default function Register() {
 
 const stars = [0,1,2,3,4];
 
+// Form Fields 
+
+// Applicant Data
+const [ name , setName] = useState("");
+const [father_name , setFatherName] = useState("");
+const [religion , setReligion] = useState("")
+const [contact , setContact] = useState("Muslim");
+const [cnic , setCnic]  = useState("");
+const [photo , setPhoto] = useState(null);
+const [cnicPic , setCnicPic] = useState(null)
+// console.log(name , father_name  ,religion , contact , cnic , photo , cnicPic);
+
+
+// Work Data 
+const [post  , setPost] = useState("Student")
+const [work_place , setWorkPlace] = useState("")
+const [office_contact , setOfficeContact]  = useState("")
+// console.log(post , work_place , office_contact);
+
+
+
+// Relatives Data
+const [relative1_name , setRelative1Name] = useState("")
+const [relative1_relation , setRelative1Relation]= useState("");
+const [relative1_contact , setRelative1Contact] = useState("");
+const [relativeOneCnicPic , setRelative1CnicPic]  = useState(null)
+
+// optional
+const [relative2_name , setRelative2Name] = useState("")
+const [relative2_relation , setRelative2Relation]= useState("");
+const [relative2_contact , setRelative2Contact] = useState("");
+const [relativeTwoCnicPic , setRelative2CnicPic] = useState(null)
+
+
+console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
+
+
+
+
+
+
 return (<>
 
 <div className="min-h-screen h-auto w-full pb-12 bg-black">
@@ -37,13 +78,14 @@ return (<>
 <form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
 <h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
-<ApplicantData/>
+<ApplicantData name={name} setName={setName} father_name= {father_name} setFatherName={setFatherName} religion = {religion} setReligion={setReligion} contact= {contact} setContact = {setContact} cnic={cnic} setCnic={setCnic} setCnicPic={setCnicPic} cnicPic ={cnicPic} setPhoto = {setPhoto}  />
 
 <h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
-<InstitueData/>
+<InstitueData post={post} setPost ={setPost} work_place ={work_place} setWorkPlace ={setWorkPlace} office_contact ={office_contact} setOfficeContact= {setOfficeContact} />
 
 <h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Relatives Data</h1>
-<RelativesData/>
+
+<RelativesData relative1_name={relative1_name} setRelative1Name ={setRelative1Name} relative1_relation = {relative1_relation} setRelative1Relation= {setRelative1Relation} relative1_contact ={relative1_contact} setRelative1Contact= {setRelative1Contact} relativeOneCnicPic ={relativeOneCnicPic} setRelative1CnicPic = {setRelative1CnicPic} relative2_name ={relative2_name} setRelative2Name ={setRelative2Name} relative2_relation = {relative2_relation} setRelative2Relation = {setRelative2Relation} relative2_contact ={relative2_contact} setRelative2Contact = {setRelative2Contact} relativeTwoCnicPic ={relativeTwoCnicPic} setRelative2CnicPic = {setRelative2CnicPic}  />
 
 {/* Submit Form */}
 <div className=" mt-4 text-center ">
@@ -51,27 +93,23 @@ return (<>
 </div>
 
 </form>
-
   </div>
-
-
 </>  )
 }
 
+function ApplicantData({ name , setName , father_name  , setFatherName , religion , setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 
-function ApplicantData() {
-
-  
 const [cnicName , setCnicName] = useState(null)
 
     const cnicRef = useRef("");
     const photRef = useRef("");
-
     const [photoPreview , setShowPreview] = useState("");
 
+
         const handleFileChange = (e)=>{
+
       const file  = e.target?.files[0]
-      console.log(file);
+    setPhoto(file)
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = ()=>{
@@ -86,10 +124,12 @@ const [cnicName , setCnicName] = useState(null)
     }
 
 const handleFileChange2 = (e)=>{
-  console.log(e.target.files[0].name);
+
+setCnicPic(e.target.files[0])  
   setCnicName(e.target.files[0].name)
  
 }
+
 
   return(<>
   <div className=" flex-col md:flex-row flex gap-1">
@@ -102,7 +142,7 @@ const handleFileChange2 = (e)=>{
 <div className="flex w-full items-center mt-2 ">
 
   <label className='font-abhyalibre w-[50%] text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
-  <input
+  <input required value={name} onChange={(e)=>setName(e.target.value)}
   className="w-[50%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
@@ -112,8 +152,9 @@ const handleFileChange2 = (e)=>{
 <div className="flex w-full justify-between items-center mt-2">
 
 
+
   <label className='font-abhyalibre w-[40%] md:w-[35p%]  flex-1 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name </label>
-  <input
+  <input required value={father_name} onChange={(e)=>setFatherName(e.target.value)}
   className=" w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
@@ -123,8 +164,9 @@ const handleFileChange2 = (e)=>{
 <div className="flex w-full justify-between items-center mt-2">
 
 
+
   <label className='font-abhyalibre w-[30%] md:w-[30%] flex-2 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
-  <input
+  <input required  value={contact} onChange={(e)=>setContact(e.target.value)}
   className=" w-[70%] md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
   min={0}
@@ -133,9 +175,10 @@ const handleFileChange2 = (e)=>{
 
 <div className="flex w-full justify-between items-center mt-2">
 
+
   <label className='font-abhyalibre  w-[40%] md:w-[40%] font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form </label>
-  <input
-  className="md:w-[60%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  <input  value={cnic} onChange={(e)=>setCnic(e.target.value)}
+ required  className="md:w-[60%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
 </div>
@@ -144,9 +187,9 @@ const handleFileChange2 = (e)=>{
 <div className="mt-2 w-full">
 <div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
 {
-  cnicName?
+  cnicName && cnicPic ?
   (<>
-<input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnicName} readOnly type='text' />   
+<input  required className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnicName} readOnly type='text' />   
   </>)
   // cnicName
   :
@@ -156,13 +199,11 @@ const handleFileChange2 = (e)=>{
   {/* when Field is loaded thed shows the file name */}
   </span>
   <i class="fa-solid fa-arrow-up-from-bracket mb-1 text-[20px] "></i>
-
   </>)
-
 }
 
 </div>
-<input  onChange={handleFileChange2} ref={cnicRef} className='hidden' type="file" />
+<input required  onChange={handleFileChange2} ref={cnicRef} className='hidden' type="file" />
 </div>
 
 
@@ -170,11 +211,24 @@ const handleFileChange2 = (e)=>{
 
 <div className="mt-3">
 
-<select className='bg-halfBlack w-full   cursor-pointer text-[20px] md:text-xl px-4 hover:opacity-90 rounded-2xl py-1' name="" id="">
-<option value=""> Religion</option>
-<option value=""> Muslim</option>
-<option value="">Hindi</option>
+<select
+
+  required
+  className="bg-halfBlack w-full cursor-pointer text-[20px] md:text-xl px-4 hover:opacity-90 rounded-2xl py-1"
+  name=""
+  id=""
+  value={religion} onChange={(e)=>setReligion(e.target.value)}
+>
+  <option disabled className="text-sm md:text-base" value="">Religion</option>
+  <option className="text-sm md:text-base"  defaultValue={"Muslim"} value="muslim">Muslim</option>
+  <option className="text-sm md:text-base" value="Hindu">Hindu</option>
+  <option className="text-sm md:text-base" value="Christian">Christian</option>
+  <option className="text-sm md:text-base" value="Sikh">Sikh</option>
+  <option className="text-sm md:text-base" value="Buddhist">Buddhist</option>
+  <option className="text-sm md:text-base" value="Other">Other</option>
 </select>
+
+
 </div>
 
 
@@ -225,9 +279,7 @@ const handleFileChange2 = (e)=>{
 }
 
 
-function InstitueData() {
-  const [post , setPost] =  useState("Student")
-console.log(post);
+function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contact , setOfficeContact}) {
 
 
   return(<>
@@ -238,8 +290,9 @@ console.log(post);
     <div  >
   <label className='text-[18px] md:text-xl' htmlFor=""> I am </label>
 
-  <select onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
-    <option value="Student">Student</option>
+  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
+
+    <option defaultValue={"Student"} value="Student">Student</option>
     <option value="Employee">Employee</option>
   </select>
     </div>
@@ -247,7 +300,7 @@ console.log(post);
     <div className='flex gap-1 mt-1' >
 
 <p className='text-[18px] md:text-xl w-[30%] mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
-<input
+<input required value={work_place} onChange={(e)=>setWorkPlace(e.target.value)}
   className="w-[60%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
@@ -256,7 +309,7 @@ console.log(post);
   
 <div className='flex gap-1 mt-2' >
 <p className='w-[50%] md:w-[30%] text-[18px] md:text-xl ' >{ post=== "Student"?"Institue":"Office" } Contact</p>
-<input
+<input required value={office_contact} onChange={(e)=>setOfficeContact(e.target.value)}
   className="w-[40%] md:w-[55%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
   min={0}
@@ -269,7 +322,8 @@ console.log(post);
 }
 
 
-function RelativesData() {
+function RelativesData({ relative1_name , relative1_relation , relative1_contact, relativeOneCnicPic ,   setRelative1Name , setRelative1Contact  , setRelative1Relation, setRelative1CnicPic ,relative2_name , relative2_relation , relative2_contact, relativeTwCnicPic  , setRelative2Name , setRelative2Contact  , setRelative2Relation,setRelative2CnicPic, }) {
+
 
 const [cnic1  ,setCnic1] = useState("")
 const [cnic2  ,setCnic2] = useState("")
@@ -278,6 +332,8 @@ const [cnic2  ,setCnic2] = useState("")
   const realtive2fileRef = useRef("");
 
   return(<>
+
+
 <div className="">
 
 <fieldset className='border border-[#B89F80] rounded-sm p-2' >
@@ -288,16 +344,16 @@ const [cnic2  ,setCnic2] = useState("")
 
   <div className='md:w-1/2 flex w-full  items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
-  <input
+  <input required value={relative1_name} onChange={(e)=>setRelative1Name(e.target.value)}
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
   </div>
 
-  <select  className='bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl' name="" id="">
-    <option  value="">Relation</option>
-    <option value="Employee">Father</option>
-    <option value="Employee">Brother</option>
+  <select required value={relative1_relation} onChange={(e)=>setRelative1Relation(e.target.value)}  className='bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl' name="" id="">
+    <option className="text-sm md:text-base"  disabled value="">Relation</option>
+    <option className="text-sm md:text-base" value="Father">Father</option>
+    <option className="text-sm md:text-base" value="Brother">Brother</option>
   </select>
 
 </div>
@@ -307,7 +363,7 @@ const [cnic2  ,setCnic2] = useState("")
 
   <div className='md:w-1/2 flex w-full  mt-2 items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
-  <input
+  <input required value={relative1_contact} onChange={(e)=>setRelative1Contact(e.target.value)}
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"/>
   </div>
@@ -322,7 +378,7 @@ const [cnic2  ,setCnic2] = useState("")
       <i class="fa-solid fa-arrow-up-from-bracket"></i>
   </>)
 }
-    <input onChange={(e)=>setCnic1(e.target.files[0].name)
+    <input onChange={(e)=>{setCnic1(e.target.files[0].name) ;setRelative1CnicPic(e.target.files[0]) }
     } ref={realtive1fileRef} className='hidden' type="file" />
   </div>
 
@@ -330,26 +386,24 @@ const [cnic2  ,setCnic2] = useState("")
 
 </fieldset>
 
-<fieldset key={Math.random()} className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
+<fieldset key={"field1"} className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
 
-  <legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
-
+<legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
 
 <div className="flex md:flex-row flex-col ">
   <div className='md:w-1/2 flex w-full  items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
-  <input
+  <input value={relative2_name} onChange={(e)=>setRelative2Name(e.target.value)}
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
   </div>
+  <select value={relative2_relation} onChange={(e)=>setRelative2Relation(e.target.value)}   className="bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl" name="" id="">
 
-  <select  className="bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl" name="" id="">
-    <option  value="">Relation</option>
-    <option value="Employee">Father</option>
-    <option value="Employee">Brother</option>
+    <option className="text-sm md:text-base"  value="">Relation</option>
+    <option className="text-sm md:text-base" value="Father">Father</option>
+    <option className="text-sm md:text-base" value="Brother">Brother</option>
   </select>
-
 
 </div>
 
@@ -358,7 +412,7 @@ const [cnic2  ,setCnic2] = useState("")
 
   <div className='md:w-1/2 flex w-full  items-center' >
 <label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
-  <input
+  <input value={relative2_contact} onChange={(e)=>setRelative2Contact(e.target.value)}
   className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"/>
   </div>
@@ -373,7 +427,7 @@ const [cnic2  ,setCnic2] = useState("")
     <i class="fa-solid fa-arrow-up-from-bracket"></i>      
       </>)
     }
-    <input onChange={(e)=>setCnic2(e.target.files[0].name)} ref={realtive2fileRef} className='hidden' type="file" />
+    <input  onChange={(e)=>{setCnic2(e.target.files[0].name) ; setRelative2CnicPic(e.target.files[0])}} ref={realtive2fileRef} className='hidden' type="file" />
   </div>
 
 </div>
