@@ -40,9 +40,13 @@ const [relativeTwoCnicPic , setRelative2CnicPic] = useState(null)
 
 console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
 
+const submit = async  ()=>{
+  try {
 
-
-
+    
+  } catch (error){ 
+  }
+}
 
 
 return (<>
@@ -51,7 +55,6 @@ return (<>
 {/* Logo */}
 
 <div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
-
 
 {/* stars */}
 
@@ -99,6 +102,7 @@ return (<>
 
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 
+
 const [cnicName , setCnicName] = useState(null)
 
     const cnicRef = useRef("");
@@ -114,13 +118,7 @@ const [cnicName , setCnicName] = useState(null)
       fileReader.readAsDataURL(file);
       fileReader.onload = ()=>{
         setShowPreview(fileReader.result);
-
       }
-
-      
-
-
-      
     }
 
 const handleFileChange2 = (e)=>{
@@ -129,6 +127,21 @@ setCnicPic(e.target.files[0])
   setCnicName(e.target.files[0].name)
  
 }
+
+
+
+
+const CNICValidation = (cnicInput) => {
+  let cleanedCnic = cnicInput.replace(/\D/g, "");
+  let formattedCnic = cleanedCnic;
+
+  if (cleanedCnic.length > 5 && cleanedCnic.length <= 12) {
+    formattedCnic = cleanedCnic.slice(0, 5) + '-' + cleanedCnic.slice(5, 12);
+  } else if (cleanedCnic.length > 12) {
+    formattedCnic = cleanedCnic.slice(0, 5) + '-' + cleanedCnic.slice(5, 12) + '-' + cleanedCnic.slice(12, 13);
+  }
+  setCnic(formattedCnic);
+};
 
 
   return(<>
@@ -160,11 +173,7 @@ setCnicPic(e.target.files[0])
 />
 </div>
 
-
 <div className="flex w-full justify-between items-center mt-2">
-
-
-
   <label className='font-abhyalibre w-[30%] md:w-[30%] flex-2 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
   <input required  value={contact} onChange={(e)=>setContact(e.target.value)}
   className=" w-[70%] md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
@@ -173,11 +182,12 @@ setCnicPic(e.target.files[0])
 />
 </div>
 
+
+
 <div className="flex w-full justify-between items-center mt-2">
 
-
   <label className='font-abhyalibre  w-[40%] md:w-[40%] font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form </label>
-  <input  value={cnic} onChange={(e)=>setCnic(e.target.value)}
+  <input  value={cnic} onChange={(e)=>CNICValidation(e.target.value)}
  required  className="md:w-[60%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
@@ -285,32 +295,41 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
   return(<>
 <div className=" text-xl mt-3 ">
 
-  <div className=" flex md:flex-row md:items-center flex-col gap-2">
+  <div className=" flex md:flex-row md:items-center flex-col gap-1">
 
     <div  >
-  <label className='text-[18px] md:text-xl' htmlFor=""> I am </label>
+  <label className='text-[18px] md:text-[20px]' htmlFor=""> I am </label>
 
-  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-2 rounded-2xl' name="" id="">
+  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-1 text-sm md:text-base rounded-2xl' name="" id="">
 
-    <option defaultValue={"Student"} value="Student">Student</option>
-    <option value="Employee">Employee</option>
+
+    
+    <option className="text-sm md:text-base" defaultValue={"Student"} value="Student">Student</option>
+  <option className="text-sm md:text-base" value="Doctor">Doctor</option>
+  <option className="text-sm md:text-base" value="Engineer">Engineer</option>
+  <option className="text-sm md:text-base" value="Teacher">Teacher</option>
+  <option className="text-sm md:text-base" value="Lawyer">Lawyer</option>
+  <option className="text-sm md:text-base" value="Businessperson">Businessperson</option>
+  <option className="text-sm md:text-base" value="Accountant">Accountant</option>
+  <option className="text-sm md:text-base" value="SoftwareDeveloper">Software Developer</option>
   </select>
     </div>
 
     <div className='flex gap-1 mt-1' >
 
-<p className='text-[18px] md:text-xl w-[30%] mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
+<p className='text-[18px] md:text-[20px]  mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
 <input required value={work_place} onChange={(e)=>setWorkPlace(e.target.value)}
-  className="w-[60%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="md:w-[60%] w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
   </div>
 </div>
   
 <div className='flex gap-1 mt-2' >
-<p className='w-[50%] md:w-[30%] text-[18px] md:text-xl ' >{ post=== "Student"?"Institue":"Office" } Contact</p>
+  
+<p className='text-[18px] md:text-xl ' >{ post=== "Student"?"Institue":"Office" } Contact</p>
 <input required value={office_contact} onChange={(e)=>setOfficeContact(e.target.value)}
-  className="w-[40%] md:w-[55%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="md:w-[65%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
   min={0}
 />
