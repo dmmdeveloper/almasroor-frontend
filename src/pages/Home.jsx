@@ -4,6 +4,7 @@ import Carousel from '../components/Carousel';
 import Grid from '../components/Grid';
 import FAQ from '../components/FAQ';
 import Achievements from '../components/Achievements';
+import Members from '../components/Members';
 
 
 
@@ -25,7 +26,9 @@ export default function Home() {
 <Achievements/>
 
 
-
+{/* Members */}
+<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-3xl mb-7' >Our Members</h1>
+<Members/>
 
   </div>
   </>)

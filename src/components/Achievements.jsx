@@ -38,9 +38,16 @@ export default function Achievements() {
       const y = (rect.top + rect.bottom) / 2 / window.innerHeight;
 
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 200,
+        spread: 100,
         origin: { x, y },
+        // startVelocity: 20
+        // decay : 1
+        // angle: 45
+        // drift :-2
+        // flat:true,
+        // ticks:400,
+        shapes: ["circle" ,"square ","star"]
       });
     }
   };
