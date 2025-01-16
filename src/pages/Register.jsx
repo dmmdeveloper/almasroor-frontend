@@ -79,6 +79,7 @@ formData.append("relative2_relation" , relative2_relation)
 formData.append("relative2_contact" ,relative2_contact)
 formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
 
+// https://almasroor-server.vercel.app
 const response =  await axios.post(`https://almasroor-server.vercel.app/member/register` , formData , {
   withCredentials : true,
   headers:{
