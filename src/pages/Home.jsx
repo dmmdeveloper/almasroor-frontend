@@ -3,6 +3,7 @@ import Nav from '../components/Nav';
 import Carousel from '../components/Carousel';
 import Grid from '../components/Grid';
 import FAQ from '../components/FAQ';
+import Achievements from '../components/Achievements';
 
 
 
@@ -18,6 +19,13 @@ export default function Home() {
 
 {/* FAQ */}
 <FAQ/>
+
+{/* Our Achievements */}
+<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-3xl mb-7' >Our Achievements</h1>
+<Achievements/>
+
+
+
 
   </div>
   </>)
