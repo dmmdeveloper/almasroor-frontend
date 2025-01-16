@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react'
+import axios from "axios"
+import toast from 'react-hot-toast';
 
 export default function Register() {
 
@@ -16,14 +18,11 @@ const [photo , setPhoto] = useState(null);
 const [cnicPic , setCnicPic] = useState(null)
 // console.log(name , father_name  ,religion , contact , cnic , photo , cnicPic);
 
-
 // Work Data 
 const [post  , setPost] = useState("Student")
 const [work_place , setWorkPlace] = useState("")
 const [office_contact , setOfficeContact]  = useState("")
 // console.log(post , work_place , office_contact);
-
-
 
 // Relatives Data
 const [relative1_name , setRelative1Name] = useState("")
@@ -37,17 +36,68 @@ const [relative2_relation , setRelative2Relation]= useState("");
 const [relative2_contact , setRelative2Contact] = useState("");
 const [relativeTwoCnicPic , setRelative2CnicPic] = useState(null)
 
+// console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
+const [ loading , setLoading ] = useState(false)
 
-console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
 
-const submit = async  ()=>{
-  try {
 
-    
+
+const submit = async  (e)=>{
+
+
+  e.preventDefault();
+  
+ try {
+
+
+  setLoading(true)
+const formData = new FormData();
+
+// Applicant Data
+formData.append("name" , name)
+formData.append("father_name" , father_name)
+formData.append("religion" , religion)
+formData.append("contact" , contact)
+formData.append("cnic" , cnic)
+formData.append("photo" ,photo )
+formData.append("cnicPic", cnicPic)
+
+// Work Data 
+formData.append("post", post)
+formData.append("work_place", work_place)
+formData.append("office_contact", office_contact)
+
+// Relatives Data
+formData.append("relative1_name", relative1_name)
+formData.append("relative1_relation" , relative1_relation)
+formData.append("relative1_contact",relative1_contact )
+formData.append( "relativeOneCnicPic" , relativeOneCnicPic )
+
+// optional
+formData.append("relative2_name" ,relative2_name )  
+formData.append("relative2_relation" , relative2_relation)
+formData.append("relative2_contact" ,relative2_contact)
+formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
+
+const response =  await axios.post(`http://localhost:4000/member/register` , formData , {
+  withCredentials : true,
+  headers:{
+    "Content-Type":"multipart/form-data"
+  }
+})
+
+const data = await response.data;
+console.log(data);
+if(data){
+  toast.success(`Dear ${data.data.name} You Are Registered Success Fully !!`)
+
+}
   } catch (error){ 
+    console.log("Member NoT Registered :)", error);
+  }finally{
+    setLoading(false)
   }
 }
-
 
 return (<>
 
@@ -78,7 +128,7 @@ return (<>
 
 <h1 className='text-halfYellow font-arboret  text-center text-2xl md:text-4xl font-[200] uppercase  md:my-4' >registeration form</h1>
 
-<form className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
+<form onSubmit={submit} className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
 <h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
 <ApplicantData name={name} setName={setName} father_name= {father_name} setFatherName={setFatherName} religion = {religion} setReligion={setReligion} contact= {contact} setContact = {setContact} cnic={cnic} setCnic={setCnic} setCnicPic={setCnicPic} cnicPic ={cnicPic} setPhoto = {setPhoto}  />
@@ -91,8 +141,16 @@ return (<>
 <RelativesData relative1_name={relative1_name} setRelative1Name ={setRelative1Name} relative1_relation = {relative1_relation} setRelative1Relation= {setRelative1Relation} relative1_contact ={relative1_contact} setRelative1Contact= {setRelative1Contact} relativeOneCnicPic ={relativeOneCnicPic} setRelative1CnicPic = {setRelative1CnicPic} relative2_name ={relative2_name} setRelative2Name ={setRelative2Name} relative2_relation = {relative2_relation} setRelative2Relation = {setRelative2Relation} relative2_contact ={relative2_contact} setRelative2Contact = {setRelative2Contact} relativeTwoCnicPic ={relativeTwoCnicPic} setRelative2CnicPic = {setRelative2CnicPic}  />
 
 {/* Submit Form */}
-<div className=" mt-4 text-center ">
-<button type='submit' className='bg-appYellow w-[300px] py-1 text-xl md:text-2xl rounded-md hover:opacity-90' >Read Terms & Conditions</button>
+<div className=" mt-4 flex justify-center text-center ">
+<button type='submit' className='bg-appYellow w-[300px] py-1 text-xl flex justify-center items-center md:text-2xl rounded-md hover:opacity-90' >
+  {
+    loading?
+<span className='submit-loading h-[30px] w-[30px] border-halfBlack border-[3px]' ></span>
+:
+<span>Read Terms & Conditions</span>
+  }
+
+  </button>
 </div>
 
 </form>
@@ -102,15 +160,13 @@ return (<>
 
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 
-
 const [cnicName , setCnicName] = useState(null)
 
     const cnicRef = useRef("");
     const photRef = useRef("");
     const [photoPreview , setShowPreview] = useState("");
 
-
-        const handleFileChange = (e)=>{
+ const handleFileChange = (e)=>{
 
       const file  = e.target?.files[0]
     setPhoto(file)
@@ -129,8 +185,6 @@ setCnicPic(e.target.files[0])
 }
 
 
-
-
 const CNICValidation = (cnicInput) => {
   let cleanedCnic = cnicInput.replace(/\D/g, "");
   let formattedCnic = cleanedCnic;
@@ -143,14 +197,11 @@ const CNICValidation = (cnicInput) => {
   setCnic(formattedCnic);
 };
 
-
-  return(<>
+ return(<>
   <div className=" flex-col md:flex-row flex gap-1">
 
 {/* text fields portion  60% */}
 <div className=" w-full md:w-[60%] mt-5">
-
-
 
 <div className="flex w-full items-center mt-2 ">
 
@@ -161,10 +212,7 @@ const CNICValidation = (cnicInput) => {
 />
 </div>
 
-
 <div className="flex w-full justify-between items-center mt-2">
-
-
 
   <label className='font-abhyalibre w-[40%] md:w-[35p%]  flex-1 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name </label>
   <input required value={father_name} onChange={(e)=>setFatherName(e.target.value)}
@@ -199,7 +247,7 @@ const CNICValidation = (cnicInput) => {
 {
   cnicName && cnicPic ?
   (<>
-<input  required className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnicName} readOnly type='text' />   
+<input  className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnicName} readOnly type='text' />   
   </>)
   // cnicName
   :
@@ -213,7 +261,7 @@ const CNICValidation = (cnicInput) => {
 }
 
 </div>
-<input required  onChange={handleFileChange2} ref={cnicRef} className='hidden' type="file" />
+<input  onChange={handleFileChange2} ref={cnicRef} className='hidden' type="file" />
 </div>
 
 
@@ -238,19 +286,12 @@ const CNICValidation = (cnicInput) => {
   <option className="text-sm md:text-base" value="Other">Other</option>
 </select>
 
-
 </div>
 
-
-
-
 </div>
-
 
 {/* file field portion  40% */}
 <div className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
-
-
 
 <div onClick={()=>{ photRef.current.click()}} className="h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 ">
 
@@ -290,6 +331,7 @@ const CNICValidation = (cnicInput) => {
 
 
 function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contact , setOfficeContact}) {
+
 
 
   return(<>
@@ -342,6 +384,7 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
 
 
 function RelativesData({ relative1_name , relative1_relation , relative1_contact, relativeOneCnicPic ,   setRelative1Name , setRelative1Contact  , setRelative1Relation, setRelative1CnicPic ,relative2_name , relative2_relation , relative2_contact, relativeTwCnicPic  , setRelative2Name , setRelative2Contact  , setRelative2Relation,setRelative2CnicPic, }) {
+
 
 
 const [cnic1  ,setCnic1] = useState("")
