@@ -22,12 +22,12 @@ export default function Home() {
 <FAQ/>
 
 {/* Our Achievements */}
-<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-3xl mb-7' >Our Achievements</h1>
+<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-2xl md:text-3xl mb-7' >Our Achievements</h1>
 <Achievements/>
 
 
 {/* Members */}
-<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-3xl mb-7' >Our Members</h1>
+<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-2xl md:text-3xl mb-7' >Our Members</h1>
 <Members/>
 
   </div>

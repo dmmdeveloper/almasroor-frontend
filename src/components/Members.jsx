@@ -72,7 +72,7 @@ export default function Members() {
   return (
     <>
       <div className="pb-[100px]">
-        <div className="slider-container  md:w-[70%] w-[80%]  mx-auto relative">
+        <div className="slider-container  md:w-[70%] w-[90%]  mx-auto relative">
           <Slider {...settings}>
             {
                 members.map((_,i)=>{
