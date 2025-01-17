@@ -109,12 +109,11 @@ return (<>
 <div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
 
 {/* stars */}
-
-<div className=" flex items-center  gap-1 relative top-3 ">
+<div key={3} className=" flex items-center  gap-1 relative top-3 ">
 {
     stars.map((_,i)=>{
         return(<>
-        <span  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
+        <span key={i}  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
         </>)
     })
 }
@@ -244,7 +243,7 @@ const CNICValidation = (cnicInput) => {
 </div>
 
 {/* upload Fields */}
-<div className="mt-2 w-full">
+<div key={"Memeber_cnic"} className="mt-2 w-full">
 <div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
 {
   cnicName && cnicPic ?
@@ -280,7 +279,7 @@ const CNICValidation = (cnicInput) => {
   value={religion} onChange={(e)=>setReligion(e.target.value)}
 >
   <option disabled className="text-sm md:text-base" value="">Religion</option>
-  <option className="text-sm md:text-base"  defaultValue={"Muslim"} value="muslim">Muslim</option>
+  <option className="text-sm md:text-base" value="muslim">Muslim</option>
   <option className="text-sm md:text-base" value="Hindu">Hindu</option>
   <option className="text-sm md:text-base" value="Christian">Christian</option>
   <option className="text-sm md:text-base" value="Sikh">Sikh</option>
@@ -293,7 +292,7 @@ const CNICValidation = (cnicInput) => {
 </div>
 
 {/* file field portion  40% */}
-<div className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
+<div key={"Memeber_photo"} className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
 
 <div onClick={()=>{ photRef.current.click()}} className="h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 ">
 
@@ -322,13 +321,8 @@ const CNICValidation = (cnicInput) => {
 
 
 
-
-
-
-
 </div>
   </>)
-  
 }
 
 
@@ -384,124 +378,199 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
   
 }
 
+function RelativesData({ 
+  relative1_name, 
+  relative1_relation, 
+  relative1_contact, 
+  relativeOneCnicPic, 
+  setRelative1Name, 
+  setRelative1Contact, 
+  setRelative1Relation, 
+  setRelative1CnicPic,
+  relative2_name, 
+  relative2_relation, 
+  relative2_contact, 
+  relativeTwCnicPic, 
+  setRelative2Name, 
+  setRelative2Contact, 
+  setRelative2Relation, 
 
-function RelativesData({ relative1_name , relative1_relation , relative1_contact, relativeOneCnicPic ,   setRelative1Name , setRelative1Contact  , setRelative1Relation, setRelative1CnicPic ,relative2_name , relative2_relation , relative2_contact, relativeTwCnicPic  , setRelative2Name , setRelative2Contact  , setRelative2Relation,setRelative2CnicPic, }) {
-
-
-
-const [cnic1  ,setCnic1] = useState("")
-const [cnic2  ,setCnic2] = useState("")
+  setRelative2CnicPic 
+}) {
+  const [cnic1, setCnic1] = useState("");
+  const [cnic2, setCnic2] = useState("");
 
   const realtive1fileRef = useRef("");
   const realtive2fileRef = useRef("");
 
-  return(<>
+  return (
+    <div>
+      {/* Relative A */}
+      <fieldset className="border border-[#B89F80] rounded-sm p-2">
+        <legend className="font-arboret text-xl md:text-xl font-[200] uppercase text-[rgba(255,255,255,0.61)]">
+          Relative A
+        </legend>
 
+        <div className="flex md:flex-row flex-col">
+          <div className="md:w-1/2 flex w-full items-center">
+            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+              Name
+            </label>
+            <input
+              required
+              value={relative1_name}
+              onChange={(e) => setRelative1Name(e.target.value)}
+              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              type="text"
+            />
+          </div>
 
-<div className="">
+          <select
+            required
+            value={relative1_relation}
+            onChange={(e) => setRelative1Relation(e.target.value)}
+            className="bg-halfBlack px-2 md:w-1/2 w-full text-[23px] md:text-xl md:px-4 md:mt-0 mt-3 rounded-2xl"
+          >
+            <option className="text-sm md:text-base" disabled value="">
+              Relation
+            </option>
+            <option className="text-sm md:text-base" value="Father">
+              Father
+            </option>
+            <option className="text-sm md:text-base" value="Brother">
+              Brother
+            </option>
+          </select>
+        </div>
 
-<fieldset className='border border-[#B89F80] rounded-sm p-2' >
-  <legend className=' font-arboret  text-xl md:text-xl font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative A.</legend>
+        <div className="flex md:flex-row flex-col mt-2">
+          <div className="md:w-1/2 flex w-full mt-2 items-center">
+            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+              Contact
+            </label>
+            <input
+              required
+              value={relative1_contact}
+              onChange={(e) => setRelative1Contact(e.target.value)}
+              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              type="number"
+            />
+          </div>
 
+          <div
+          key={"relavtvi2__cnic"}
+            onClick={() => {
+              realtive1fileRef.current.click();
+            }}
+            className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1"
+          >
+            {cnic1 ? (
+              <input
+                className="bg-halfBlack h-[90%] border-none outline-none ml-2"
+                value={cnic1}
+                readOnly
+                type="text"
+              />
+            ) : (
+              <>
+                <span>upload cnic</span>
+                <i className="fa-solid fa-arrow-up-from-bracket"></i>
+              </>
+            )}
+            <input
+              onChange={(e) => {
+                setCnic1(e.target.files[0].name);
+                setRelative1CnicPic(e.target.files[0]);
+              }}
+              ref={realtive1fileRef}
+              className="hidden"
+              type="file"
+            />
+          </div>
+        </div>
+      </fieldset>
 
-<div className="flex md:flex-row flex-col ">
+      {/* Relative B */}
+      <fieldset className="border border-[#B89F80] rounded-sm p-2 mt-2">
+        <legend className="font-arboret text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]">
+          Relative B <span className="italic">(optional)</span>
+        </legend>
 
-  <div className='md:w-1/2 flex w-full  items-center' >
-<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
-  <input required value={relative1_name} onChange={(e)=>setRelative1Name(e.target.value)}
-  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="text"
-/>
-  </div>
+        <div className="flex md:flex-row flex-col">
+          <div className="md:w-1/2 flex w-full items-center">
+            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+              Name
+            </label>
+            <input
+              value={relative2_name}
+              onChange={(e) => setRelative2Name(e.target.value)}
+              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              type="text"
+            />
+          </div>
 
-  <select required value={relative1_relation} onChange={(e)=>setRelative1Relation(e.target.value)}  className='bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl' name="" id="">
-    <option className="text-sm md:text-base"  disabled value="">Relation</option>
-    <option className="text-sm md:text-base" value="Father">Father</option>
-    <option className="text-sm md:text-base" value="Brother">Brother</option>
-  </select>
+          <select
+            value={relative2_relation}
+            onChange={(e) => setRelative2Relation(e.target.value)}
+            className="bg-halfBlack px-2 md:w-1/2 w-full text-[23px] md:text-xl md:px-4 md:mt-0 mt-3 rounded-2xl"
+          >
+            <option className="text-sm md:text-base" value="">
+              Relation
+            </option>
+            <option className="text-sm md:text-base" value="Father">
+              Father
+            </option>
+            <option className="text-sm md:text-base" value="Brother">
+              Brother
+            </option>
+          </select>
+        </div>
 
-</div>
+        <div className="flex md:flex-row flex-col mt-3">
+          <div className="md:w-1/2 flex w-full items-center">
+            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+              Contact
+            </label>
+            <input
+              value={relative2_contact}
+              onChange={(e) => setRelative2Contact(e.target.value)}
+              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              type="number"
+            />
+          </div>
 
-
-<div className="flex md:flex-row flex-col mt-2 ">
-
-  <div className='md:w-1/2 flex w-full  mt-2 items-center' >
-<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
-  <input required value={relative1_contact} onChange={(e)=>setRelative1Contact(e.target.value)}
-  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="number"/>
-  </div>
-
-  <div key={Math.random()} onClick={(e)=>{ realtive1fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1">
-{
-  cnic1 ?
-<input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic1} readOnly type='text' />   
-  :
-  (<>
-      <span>upload cnic</span>
-      <i class="fa-solid fa-arrow-up-from-bracket"></i>
-  </>)
-}
-    <input onChange={(e)=>{setCnic1(e.target.files[0].name) ;setRelative1CnicPic(e.target.files[0]) }
-    } ref={realtive1fileRef} className='hidden' type="file" />
-  </div>
-
-</div>
-
-</fieldset>
-
-<fieldset key={"field1"} className='border border-[#B89F80] rounded-sm p-2 mt-2 ' >
-
-<legend className=' font-arboret  text-xl md:text-[18px] font-[200] uppercase text-[rgba(255,255,255,0.61)]' >Relative b <span className='italic' >(optional) </span>  .</legend>
-
-<div className="flex md:flex-row flex-col ">
-  <div className='md:w-1/2 flex w-full  items-center' >
-<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Name </label>
-  <input value={relative2_name} onChange={(e)=>setRelative2Name(e.target.value)}
-  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="text"
-/>
-  </div>
-  <select value={relative2_relation} onChange={(e)=>setRelative2Relation(e.target.value)}   className="bg-halfBlack px-2 md:w-1/2 w-full  text-[23px] md:text-xl  md:px-4 md:mt-0 mt-3 rounded-2xl" name="" id="">
-
-    <option className="text-sm md:text-base"  value="">Relation</option>
-    <option className="text-sm md:text-base" value="Father">Father</option>
-    <option className="text-sm md:text-base" value="Brother">Brother</option>
-  </select>
-
-</div>
-
-
-<div className="flex md:flex-row flex-col mt-3 ">
-
-  <div className='md:w-1/2 flex w-full  items-center' >
-<label className='font-abhyalibre  text-[18px] md:text-xl flex-2 font-[700]  ' htmlFor="">Contact </label>
-  <input value={relative2_contact} onChange={(e)=>setRelative2Contact(e.target.value)}
-  className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="number"/>
-  </div>
-
-  <div key={Math.random()} onClick={(e)=>{ realtive2fileRef.current.click()}} className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1">
-    {
-      cnic2?
-      <input className='bg-halfBlack h-[90%] border-none outline-none ml-2' value={cnic2} readOnly type='text' />   
-:
-      (<>
-    <span>upload cnic</span>
-    <i class="fa-solid fa-arrow-up-from-bracket"></i>      
-      </>)
-    }
-    <input  onChange={(e)=>{setCnic2(e.target.files[0].name) ; setRelative2CnicPic(e.target.files[0])}} ref={realtive2fileRef} className='hidden' type="file" />
-  </div>
-
-</div>
-
-</fieldset>
-
-</div>
-
-
-  </>)
-
-  
+          <div
+          key={"relative1_cnic"}
+            onClick={() => {
+              realtive2fileRef.current.click();
+            }}
+            className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1"
+          >
+            {cnic2 ? (
+              <input
+                className="bg-halfBlack h-[90%] border-none outline-none ml-2"
+                value={cnic2}
+                readOnly
+                type="text"
+              />
+            ) : (
+              <>
+                <span>upload cnic</span>
+                <i className="fa-solid fa-arrow-up-from-bracket"></i>
+              </>
+            )}
+            <input
+              onChange={(e) => {
+                setCnic2(e.target.files[0].name);
+                setRelative2CnicPic(e.target.files[0]);
+              }}
+              ref={realtive2fileRef}
+              className="hidden"
+              type="file"
+            />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  );
 }
