@@ -43,9 +43,14 @@ const [ loading , setLoading ] = useState(false)
 
 
 const submit = async  (e)=>{
-
-
   e.preventDefault();
+
+
+// Validation
+
+if(!photo) {toast.error("Member Photo is Required")  ; return}
+if(!cnicPic) { toast.error("Memebr Cnic Picture is Required ") ; return }
+if(!relativeOneCnicPic)  { toast.error("RELATIVE A. Cnic is Required :)")  ; return}
   
  try {
 
@@ -79,6 +84,7 @@ formData.append("relative2_relation" , relative2_relation)
 formData.append("relative2_contact" ,relative2_contact)
 formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
 
+// https://almasroor-server.vercel.app
 // https://almasroor-server.vercel.app
 const response =  await axios.post(`https://almasroor-server.vercel.app/member/register` , formData , {
   withCredentials : true,
@@ -337,16 +343,16 @@ const CNICValidation = (cnicInput) => {
 function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contact , setOfficeContact}) {
 
 
-
   return(<>
 <div className=" text-xl mt-3 ">
 
   <div className=" flex md:flex-row md:items-center flex-col gap-1">
 
     <div  >
-  <label className='text-[18px] grow-0 shrink-0 flex-0 md:text-[20px]' htmlFor=""> I am </label>
 
-  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack grow  px-1 text-sm md:text-base rounded-2xl' name="" id="">
+  <label className='text-[18px] grow-0 shrink-0 flex-0 md:text-[16px]' htmlFor=""> I am </label>
+
+  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack grow  px-2 py-1 text-[17px] md:text-base rounded-2xl' name="" id="">
 
 
     
@@ -361,7 +367,8 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
   </select>
     </div>
 
-    <div className='flex gap-1 mt-1' >
+    <div className='flex gap-1 mt-2' >
+
 
 <p className='text-[18px] md:text-[20px] grow-0 shrink-0 flex-0 mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
 <input required value={work_place} onChange={(e)=>setWorkPlace(e.target.value)}
