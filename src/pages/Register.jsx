@@ -14,8 +14,8 @@ const [father_name , setFatherName] = useState("");
 const [religion , setReligion] = useState("")
 const [contact , setContact] = useState("Muslim");
 const [cnic , setCnic]  = useState("");
-const [photo , setPhoto] = useState(null);
-const [cnicPic , setCnicPic] = useState(null)
+const [photo , setPhoto] = useState({});
+const [cnicPic , setCnicPic] = useState({});
 // console.log(name , father_name  ,religion , contact , cnic , photo , cnicPic);
 
 // Work Data 
@@ -28,29 +28,62 @@ const [office_contact , setOfficeContact]  = useState("")
 const [relative1_name , setRelative1Name] = useState("")
 const [relative1_relation , setRelative1Relation]= useState("");
 const [relative1_contact , setRelative1Contact] = useState("");
-const [relativeOneCnicPic , setRelative1CnicPic]  = useState(null)
+const [relativeOneCnicPic , setRelative1CnicPic]  = useState({})
 
 // optional
 const [relative2_name , setRelative2Name] = useState("")
 const [relative2_relation , setRelative2Relation]= useState("");
 const [relative2_contact , setRelative2Contact] = useState("");
-const [relativeTwoCnicPic , setRelative2CnicPic] = useState(null)
+const [relativeTwoCnicPic , setRelative2CnicPic] = useState({})
 
 // console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
-const [ loading , setLoading ] = useState(false)
+const [ loading , setLoading ] = useState(false);
+
+
+// files Validation states
 
 
 
 
 const submit = async  (e)=>{
-  e.preventDefault();
 
+  e.preventDefault();
 
 // Validation
 
 if(!photo) {toast.error("Member Photo is Required")  ; return}
 if(!cnicPic) { toast.error("Memebr Cnic Picture is Required ") ; return }
 if(!relativeOneCnicPic)  { toast.error("RELATIVE A. Cnic is Required :)")  ; return}
+
+
+if(photo?.size>1000000){
+  toast.error("Photo Size is Too Big \n The Maximum Size of File is 1MB")
+  return;
+}
+
+
+if(cnicPic?.size> 1000000){
+  toast.error("Applicant Cnic Size is Too Big \n The Maximum Size of File is 1MB")
+return;
+}
+
+if(relativeOneCnicPic?.size>1000000){
+  toast.error("Relative A. Cnic Size is Too Big \n The Maximum Size of File is 1MB")
+  return;
+}
+
+
+if(relativeTwoCnicPic?.size>1000000){
+  toast.error("Relative B. Cnic Size is Too Big \n The Maximum Size of File is 1MB")
+  return;
+}
+
+
+
+
+
+
+
   
  try {
 
@@ -133,11 +166,12 @@ return (<>
 </div>
 
 <h1 className='text-halfYellow font-arboret  text-center text-2xl md:text-4xl font-[200] uppercase  md:my-4' >registeration form</h1>
+<p className='text-white w-[40%] mx-auto' ><span className='text-appYellow' >⚠️ Note:</span> The File Size is Maximum <span className='text-appYellow font-bold' >1MB</span>, if file field is <span className='text-appYellow italic' >vibrate</span> it means the file size is <span className='italic' >geater than 1MB</span>.</p>
 
 <form onSubmit={submit} className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
 <h1 className='text-halfYellow font-arboret  text-2xl md:text-2xl font-[200] uppercase ' >Applicant data</h1>
-<ApplicantData name={name} setName={setName} father_name= {father_name} setFatherName={setFatherName} religion = {religion} setReligion={setReligion} contact= {contact} setContact = {setContact} cnic={cnic} setCnic={setCnic} setCnicPic={setCnicPic} cnicPic ={cnicPic} setPhoto = {setPhoto}  />
+<ApplicantData name={name} setName={setName} father_name= {father_name} setFatherName={setFatherName} religion = {religion} setReligion={setReligion} contact= {contact} setContact = {setContact} cnic={cnic} setCnic={setCnic} setCnicPic={setCnicPic} cnicPic ={cnicPic} setPhoto = {setPhoto}  photo={photo} />
 
 <h1 className='text-halfYellow font-arboret  text-xl md:text-2xl font-[200] uppercase mt-5 ' >Institue/Employment Data</h1>
 <InstitueData post={post} setPost ={setPost} work_place ={work_place} setWorkPlace ={setWorkPlace} office_contact ={office_contact} setOfficeContact= {setOfficeContact} />
@@ -164,7 +198,7 @@ return (<>
 </>  )
 }
 
-function ApplicantData({ name , setName , father_name  , setFatherName , religion , setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
+function ApplicantData({ name , setName , father_name  , setFatherName , religion , photo, setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 
 const [cnicName , setCnicName] = useState(null)
 
@@ -209,7 +243,6 @@ const CNICValidation = (cnicInput) => {
 {/* text fields portion  60% */}
 <div className=" w-full md:w-[60%] mt-5">
 
-
 <div className="flex w-full gap-1 items-center mt-2">
   <label
     className="font-abhyalibre grow-0 shrink-0 flex-0  text-[15px]  font-[700]"
@@ -225,7 +258,6 @@ const CNICValidation = (cnicInput) => {
     type="text"
   />
 </div>
-
 
 <div className="flex w-full gap-1 justify-between items-center mt-2">
 
@@ -259,7 +291,7 @@ const CNICValidation = (cnicInput) => {
 
 {/* upload Fields */}
 <div key={"Memeber_cnic"} className="mt-2 w-full">
-<div onClick={()=>{ cnicRef.current.click() }} className='bg-halfBlack w-full cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1'>
+<div onClick={()=>{ cnicRef.current.click() }} className={`bg-halfBlack w-ful  cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1 ${cnicPic?.size> 1000000 ?"vibrate":""} `}>
 {
   cnicName && cnicPic ?
   (<>
@@ -308,13 +340,13 @@ const CNICValidation = (cnicInput) => {
 {/* file field portion  40% */}
 <div key={"Memeber_photo"} className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
 
-<div onClick={()=>{ photRef.current.click()}} className="h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 ">
+<div onClick={()=>{ photRef.current.click()}} className={`h-[200px] ${photo?.size > 1000000 ?"vibrate":""} w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 `}>
 
 {
   photoPreview ? 
 
   <figure>
-<img className='h-[200px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
+<img className='h-[195px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
 </figure>
 :
 <div className='h-[200px] w-[150px] flex justify-center items-center flex-col gap-2' >
@@ -397,6 +429,7 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
 
 function RelativesData({ 
 
+
   relative1_name, 
   relative1_relation, 
   relative1_contact, 
@@ -408,7 +441,7 @@ function RelativesData({
   relative2_name, 
   relative2_relation, 
   relative2_contact, 
-  relativeTwCnicPic, 
+  relativeTwoCnicPic, 
   setRelative2Name, 
   setRelative2Contact, 
   setRelative2Relation, 
@@ -483,9 +516,9 @@ function RelativesData({
             onClick={() => {
               realtive1fileRef.current.click();
             }}
-            className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1"
+            className={`md:w-1/2 mt-2  ${relativeOneCnicPic?.size > 1000000 ?"vibrate":""} flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
           >
-            {cnic1 ? (
+            {cnic1  ? (
               <input
                 className="bg-halfBlack h-[90%] border-none outline-none ml-2"
                 value={cnic1}
@@ -566,7 +599,7 @@ function RelativesData({
             onClick={() => {
               realtive2fileRef.current.click();
             }}
-            className="md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1"
+            className={`md:w-1/2 mt-2 flex ${relativeTwoCnicPic?.size > 1000000 ?"vibrate":""} w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
           >
             {cnic2 ? (
               <input

@@ -20,7 +20,7 @@ function PrevArrow({ onClick }) {
   return (
     <div
       className="absolute md:h-[40px] h-[25px] w-[25px] md:w-[40px] border border-[rgba(255,255,255,0.5)] hover:border-[rgba(255,255,255,1)] bg-halfBlack rounded-full flex items-center justify-center left-[-15px] top-[30%] md:top-[50%] transform -translate-y-1/2 cursor-pointer z-10"
-    //   onClick={onClick}
+      onClick={onClick}
     >
       <i className="fa-solid fa-chevron-left text-white"></i>
     </div>

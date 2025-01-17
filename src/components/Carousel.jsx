@@ -8,10 +8,7 @@ import { useSwipeable } from "react-swipeable";
 import img1 from "./room.jpg";
 import img2 from "./Professtional.avif"
 
-
 function Carousel() {
-
-
 
   const [index, setIndex] = useState(1); // Track the current slide index
   const [direction, setDirection] = useState("next"); // Track slide direction
@@ -44,18 +41,15 @@ function Carousel() {
     } , 5000);
   }, []); 
 
+
   return (
     <div
-
-      {...handlers} // Attach swipe handlers
+      {...handlers}
       className="relative group duration-300 w-full  overflow-hidden"
     >
       <div className="relative bg-black flex">
-
         {/* Slides */}
         {slides.map((slide) => (
-
-
           <div
           style={{backgroundImage:`url(${slide?.bgimg})`}}
             key={slide?.id}
@@ -155,90 +149,5 @@ const slides = [
 ];
 
 
-
-function Carouse ()  {
-
-const slide1   = "https://images.pexels.com/photos/635041/pexels-photo-635041.jpeg?auto=compress&cs=tinysrgb&w=600"
-
-useEffect(()=>{
-  Aos.init({duration :1000})
-},[])
-
-
-  const settings = {
-    lazyLoad: false,
-    // dots: true, // Enable dots for navigation
-    infinite: true, // Infinite scrolling
-    speed: 500, // Transition speed in ms
-    slidesToShow: 1, // Show one slide at a time
-    slidesToScroll: 1, // Scroll one slide at a time
-    // autoplay: true, // Enable autoplay
-    // autoplaySpeed: 3000, // Time between slides in ms
-    arrows: false, // Disable default navigation arrows
-    // autoplay:true
-    afterChange: () => {
-      // Reinitialize AOS after each slide transition
-      Aos.refreshHard();
-    },
-
-  };
-
-  return (
-    <div className="w-full  mx-auto">
-
-
-{/* Slide */}
-
-<Slider {...settings}>
-
-
-<div className="md:h-[450px] h-[300px] relative w-full flex justify-center items-center  carousel-slide ">
-
-  <div className="h-full w-full absolute top-0 bg-[rgba(0,0,0,0.2)] flex justify-center items-center">
-<div>
-
-  <h2 
-     className="md:text-6xl text-3xl text-white text-center font-[300] md:mt-7 mt-4 ">WELCOME TO </h2>
-  <h1  data-aos="zoom-in"  data-aos-duration="700" data-aos-delay="1000" className="md:text-8xl text-5xl text-white text-center font-[500] md:mt-7 mt-4 uppercase "> Al masroor </h1>
-  <h3  data-aos="fade-left"   data-aos-duration="700" data-aos-delay="1500" className="md:text-3xl text-xl text-white text-center font-[400] md:mt-7  mt-4 font-palywrite  "> A Home Away From Home </h3>
-
-</div>
-  </div>
-</div>
-
-
-<div className="md:h-[450px] h-[300px] relative w-full flex justify-center items-center  carousel-slide ">
-  <div className="h-full w-full absolute top-0 bg-[rgba(0,0,0,0.2)] flex justify-center items-center">
-<div>
-  <h2 
-     className="md:text-6xl text-3xl text-white text-center font-[300] md:mt-7 mt-4 welcome ">WELCOME TO </h2>
-  <h1  data-aos="zoom-in"  data-aos-duration="700" data-aos-delay="1000" className="md:text-8xl text-5xl text-white text-center font-[500] md:mt-7 mt-4 uppercase "> Al masroor </h1>
-  <h3  data-aos="fade-left"   data-aos-duration="700" data-aos-delay="1500" className="md:text-3xl text-xl text-white text-center font-[400] md:mt-7  mt-4 font-palywrite  "> A Home Away From Home </h3>
-</div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-        
-  
-
-      
-
-
-        
-      </Slider>
-    </div>
-  );
-};
 
 export default Carousel;

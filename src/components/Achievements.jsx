@@ -68,13 +68,15 @@ export default function Achievements() {
           <i className="fa-solid fa-thumbs-up text-halfYellow text-5xl md:text-7xl"></i>
           <h1 className="text-center text-appYellow text-2xl md:text-3xl font-bold">
             {startCount ? (
-              <CountUp
-                start={0}
-                end={4700}
-                duration={4}
-                suffix="+"
-                onEnd={() => triggerConfetti(0)}
-              />
+        <CountUp
+        start={0}
+        end={4.7}
+        duration={4}
+        decimals={1} // Specify the number of decimal places
+        decimal="." // Specify the decimal separator
+        suffix="K+"
+        onEnd={() => triggerConfetti(0)}
+      />
             ) : (
               '0+'
             )}
@@ -121,6 +123,7 @@ export default function Achievements() {
                 end={3}
                 duration={4.5}
                 onEnd={() => triggerConfetti(2)}
+                prefix='0'
               />
             ) : (
               '0'
