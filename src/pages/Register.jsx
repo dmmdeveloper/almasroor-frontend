@@ -166,7 +166,7 @@ return (<>
 </div>
 
 <h1 className='text-halfYellow font-arboret  text-center text-2xl md:text-4xl font-[200] uppercase  md:my-4' >registeration form</h1>
-<p className='text-white w-[40%] mx-auto' ><span className='text-appYellow' >⚠️ Note:</span> The File Size is Maximum <span className='text-appYellow font-bold' >1MB</span>, if file field is <span className='text-appYellow italic' >vibrate</span> it means the file size is <span className='italic' >geater than 1MB</span>.</p>
+<p className='text-white md:w-[40%] w-[90%] mx-auto' ><span className='text-appYellow' >⚠️ Note:</span> The File Size is Maximum <span className='text-appYellow font-bold' >1MB</span>, if file field is <span className='text-appYellow italic' >vibrate</span> it means the file size is <span className='italic' >geater than 1MB</span>.</p>
 
 <form onSubmit={submit} className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
