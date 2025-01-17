@@ -85,7 +85,6 @@ formData.append("relative2_contact" ,relative2_contact)
 formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
 
 // https://almasroor-server.vercel.app
-// https://almasroor-server.vercel.app
 const response =  await axios.post(`https://almasroor-server.vercel.app/member/register` , formData , {
   withCredentials : true,
   headers:{
@@ -115,11 +114,11 @@ return (<>
 <div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
 
 {/* stars */}
-<div key={3} className=" flex items-center  gap-1 relative top-3 ">
+<div key={"Star"} className=" flex items-center  gap-1 relative top-3 ">
 {
     stars.map((_,i)=>{
         return(<>
-        <span key={i}  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
+        <span key={Math.random()*999}  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
         </>)
     })
 }

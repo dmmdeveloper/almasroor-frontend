@@ -12,10 +12,6 @@ function App(params) {
     alert()
   }
   
-useEffect(()=>{
-  // hello()
- }  , [])
-
 return(<>
 <AppContextProvider value={{hello}} >
 

@@ -72,12 +72,12 @@ export default function Members() {
   return (
     <>
       <div className="pb-[100px]">
-        <div className="slider-container  md:w-[70%] w-[90%]  mx-auto relative">
+        <div className="slider-container   md:w-[800px]  w-[300px]  mx-auto relative">
           <Slider {...settings}>
             {
                 members.map((_,i)=>{
                     return(<>
-                       <div key={i} className="md:h-[300px]  h-[200px] w-[150px] md:w-[300px] bg-halfBlak text-white  p-1">
+                       <div key={i} className="md:h-[300px]  h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white  p-1">
                         <figure>
                             <img className="md:h-[230px] h-[100px] w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJAMqnNNOhNXFccLb3g-Peox11XvCkesSCg&s" alt="" />
                         </figure>
