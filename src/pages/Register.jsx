@@ -204,28 +204,38 @@ const CNICValidation = (cnicInput) => {
 {/* text fields portion  60% */}
 <div className=" w-full md:w-[60%] mt-5">
 
-<div className="flex w-full items-center mt-2 ">
 
-  <label className='font-abhyalibre w-[50%] text-[18px] md:text-xl md:w-[60%] flex-2 font-[700]  ' htmlFor="">Name Of Applicant</label>
-  <input required value={name} onChange={(e)=>setName(e.target.value)}
-  className="w-[50%] md:w-[40%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
-  type="text"
-/>
+<div className="flex w-full gap-1 items-center mt-2">
+  <label
+    className="font-abhyalibre grow-0 shrink-0 flex-0  text-[15px]  font-[700]"
+    htmlFor=""
+  >
+    Name Of Applicant
+  </label>
+  <input
+    required
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+    type="text"
+  />
 </div>
 
-<div className="flex w-full justify-between items-center mt-2">
 
-  <label className='font-abhyalibre w-[40%] md:w-[35p%]  flex-1 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name </label>
+<div className="flex w-full gap-1 justify-between items-center mt-2">
+
+  <label className='font-abhyalibre] grow-0  shrink-0 flex-0 font-[700] text-[20px] md:text-xl' htmlFor="">Father Name </label>
   <input required value={father_name} onChange={(e)=>setFatherName(e.target.value)}
-  className=" w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className=" grow   bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
 </div>
 
-<div className="flex w-full justify-between items-center mt-2">
-  <label className='font-abhyalibre w-[30%] md:w-[30%] flex-2 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
+<div className="flex w-full gap-1 justify-between items-center mt-2">
+
+  <label className='font-abhyalibre  grow-0 shrink-0 flex-0 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
   <input required  value={contact} onChange={(e)=>setContact(e.target.value)}
-  className=" w-[70%] md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className=" grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
   min={0}
 />
@@ -233,11 +243,11 @@ const CNICValidation = (cnicInput) => {
 
 
 
-<div className="flex w-full justify-between items-center mt-2">
+<div className="flex w-full gap-1 justify-between items-center mt-2">
 
-  <label className='font-abhyalibre  w-[40%] md:w-[40%] font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form </label>
+  <label className='font-abhyalibre  grow-0 shrink-0 flex-0 font-[700] text-[20px] md:text-xl' htmlFor="">CNIC/B.Form </label>
   <input  value={cnic} onChange={(e)=>CNICValidation(e.target.value)}
- required  className="md:w-[60%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+ required  className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
 </div>
@@ -269,7 +279,6 @@ const CNICValidation = (cnicInput) => {
 {/* Select  */}
 
 <div className="mt-3">
-
 <select
 
   required
@@ -325,7 +334,6 @@ const CNICValidation = (cnicInput) => {
   </>)
 }
 
-
 function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contact , setOfficeContact}) {
 
 
@@ -336,9 +344,9 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
   <div className=" flex md:flex-row md:items-center flex-col gap-1">
 
     <div  >
-  <label className='text-[18px] md:text-[20px]' htmlFor=""> I am </label>
+  <label className='text-[18px] grow-0 shrink-0 flex-0 md:text-[20px]' htmlFor=""> I am </label>
 
-  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack px-1 text-sm md:text-base rounded-2xl' name="" id="">
+  <select value={post} required onChange={(e)=>setPost(e.target.value)} className='bg-halfBlack grow  px-1 text-sm md:text-base rounded-2xl' name="" id="">
 
 
     
@@ -355,22 +363,25 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
 
     <div className='flex gap-1 mt-1' >
 
-<p className='text-[18px] md:text-[20px]  mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
+<p className='text-[18px] md:text-[20px] grow-0 shrink-0 flex-0 mt-1' > {post=== "Student"? "Studied At":"Worked At"} </p>
 <input required value={work_place} onChange={(e)=>setWorkPlace(e.target.value)}
-  className="md:w-[60%] w-[70%]  bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+  className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="text"
 />
   </div>
 </div>
   
-<div className='flex gap-1 mt-2' >
+<div className='flex w-full  gap-1 mt-2' >
   
-<p className='text-[18px] md:text-xl ' >{ post=== "Student"?"Institue":"Office" } Contact</p>
+<p className='text-[15px] grow-0 shrink-0 flex-0 md:text-xl'>{ post=== "Student"?"Institue":"Office" } Contact</p>
+
 <input required value={office_contact} onChange={(e)=>setOfficeContact(e.target.value)}
-  className="md:w-[65%] w-[60%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+
+  className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
   type="number"
   min={0}
 />
+
   </div>
 
   </div>  
@@ -379,6 +390,7 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
 }
 
 function RelativesData({ 
+
   relative1_name, 
   relative1_relation, 
   relative1_contact, 
@@ -411,16 +423,18 @@ function RelativesData({
           Relative A
         </legend>
 
-        <div className="flex md:flex-row flex-col">
-          <div className="md:w-1/2 flex w-full items-center">
-            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+        <div className="flex md:flex-row gap-2 flex-col">
+
+          <div className="md:w-1/2 gap-1 flex w-full items-center">
+
+            <label className="font-abhyalibre text-[18px] md:text-xl grow-0 shrink-0 flex-0 font-[700]">
               Name
             </label>
             <input
               required
               value={relative1_name}
               onChange={(e) => setRelative1Name(e.target.value)}
-              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
               type="text"
             />
           </div>
@@ -443,16 +457,17 @@ function RelativesData({
           </select>
         </div>
 
-        <div className="flex md:flex-row flex-col mt-2">
-          <div className="md:w-1/2 flex w-full mt-2 items-center">
-            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+        <div className="flex md:flex-row gap-2 flex-col mt-2">
+
+          <div className="md:w-1/2 gap-1 flex w-full mt-2 items-center">
+            <label className="font-abhyalibre text-[18px] md:text-xl grow-0 shrink-0 flex-0font-[700]">
               Contact
             </label>
             <input
               required
               value={relative1_contact}
               onChange={(e) => setRelative1Contact(e.target.value)}
-              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
               type="number"
             />
           </div>
@@ -496,15 +511,15 @@ function RelativesData({
           Relative B <span className="italic">(optional)</span>
         </legend>
 
-        <div className="flex md:flex-row flex-col">
+        <div className="flex md:flex-row gap-2 flex-col">
           <div className="md:w-1/2 flex w-full items-center">
-            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+            <label className="font-abhyalibre text-[18px] md:text-xl grow-0 shrink-0 flex-0font-[700]">
               Name
             </label>
             <input
               value={relative2_name}
               onChange={(e) => setRelative2Name(e.target.value)}
-              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
               type="text"
             />
           </div>
@@ -524,17 +539,18 @@ function RelativesData({
               Brother
             </option>
           </select>
+
         </div>
 
-        <div className="flex md:flex-row flex-col mt-3">
+        <div className="flex md:flex-row gap-2 flex-col mt-3">
           <div className="md:w-1/2 flex w-full items-center">
-            <label className="font-abhyalibre text-[18px] md:text-xl flex-2 font-[700]">
+            <label className="font-abhyalibre text-[18px] md:text-xl grow-0 shrink-0 flex-0 font-[700]">
               Contact
             </label>
             <input
               value={relative2_contact}
               onChange={(e) => setRelative2Contact(e.target.value)}
-              className="w-full md:w-[70%] bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
+              className="grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
               type="number"
             />
           </div>
