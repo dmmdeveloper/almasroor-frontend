@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-
+import axios from "axios"
 // Custom Next Arrow
 function NextArrow({ onClick }) {
   return (
@@ -29,6 +29,8 @@ function PrevArrow({ onClick }) {
 
 export default function Members() {
 
+
+const [members , setMembers] = useState([])
 
   const settings = {
 
@@ -67,7 +69,25 @@ export default function Members() {
   
   };
 
-  const members = [1,2,3,4,5]
+
+const fetchMembers = async ()=>{
+
+  try {
+    const response = await axios.get(`https://almasroor-server.vercel.app/member/members`, { withCredentials:true})
+    const data = await response.data;
+    console.log(data.data);
+    setMembers(data.data)
+    
+  } catch (error) {
+    console.log("Memebers are Not Fetched :))" , error);
+    
+    
+  }
+}
+
+useEffect(()=>{
+fetchMembers()
+},[])
 
   return (
     <>
@@ -75,14 +95,14 @@ export default function Members() {
         <div className="slider-container   md:w-[800px]  w-[300px]  mx-auto relative">
           <Slider {...settings}>
             {
-                members.map((_,i)=>{
+                members.map((m,i)=>{
                     return(<>
-                       <div key={i} className="md:h-[300px]  h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white  p-1">
+                       <div key={m?._id} className="md:h-[300px]  h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white  p-1">
                         <figure>
-                            <img className="md:h-[230px] h-[100px] w-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJAMqnNNOhNXFccLb3g-Peox11XvCkesSCg&s" alt="" />
+                            <img className="md:h-[230px] h-[100px] w-full" src={ m?.photo }alt="" />
                         </figure>
-                        <h2 className="text-center md:font-[600] font-[400] mt-2 text-[16px] md:text-[22px] tex" >Dost Muhammad </h2>
-                        <p className="text-center text-appYellow text-[15px] " >Developer</p>
+                        <h2 className="text-center md:font-[600] font-[400] mt-2 text-[16px] md:text-[22px] tex" >{m?.name} </h2>
+                        <p className="text-center text-appYellow text-[15px] " >{m?.work_post}</p>
 
 
 
