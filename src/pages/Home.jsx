@@ -5,12 +5,13 @@ import Grid from '../components/Grid';
 import FAQ from '../components/FAQ';
 import Achievements from '../components/Achievements';
 import Members from '../components/Members';
+import Message from '../components/Message';
 
 
 
 export default function Home() {
   return (<>
-  <div className='bg-black' > 
+  <div className='bg-black pb-8' > 
     <Nav/>
 <Carousel/>
 
@@ -30,6 +31,10 @@ export default function Home() {
 <h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-2xl md:text-3xl mb-7' >Our Members</h1>
 <Members/>
 
+{/* Touch US */}
+<h1 className='text-halfYellow md:w-[70%] w-[90%] text-center mx-auto  text-2xl md:text-3xl mb-7' >Touch US</h1>
+
+<Message/>
   </div>
   </>)
 
