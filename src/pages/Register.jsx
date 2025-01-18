@@ -200,6 +200,7 @@ return (<>
 
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , photo, setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 
+
 const [cnicName , setCnicName] = useState(null)
 
     const cnicRef = useRef("");
@@ -340,13 +341,14 @@ const CNICValidation = (cnicInput) => {
 {/* file field portion  40% */}
 <div key={"Memeber_photo"} className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
 
+
 <div onClick={()=>{ photRef.current.click()}} className={`h-[200px] ${photo?.size > 1000000 ?"vibrate":""} w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 `}>
 
 {
   photoPreview ? 
 
   <figure>
-<img className='h-[195px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
+<img className='h-[200px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
 </figure>
 :
 <div className='h-[200px] w-[150px] flex justify-center items-center flex-col gap-2' >
