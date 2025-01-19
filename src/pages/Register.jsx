@@ -63,17 +63,17 @@ if (!relativeOneCnicPic || !(relativeOneCnicPic instanceof File)) {
   return;
 }
 
-if (photo.size > 1000000) {
+if (photo?.size > 1000000) {
   toast.error("Photo Size is Too Big. The Maximum Size of File is 1MB");
   return;
 }
 
-if (cnicPic.size > 1000000) {
+if (cnicPic?.size > 1000000) {
   toast.error("Applicant CNIC Size is Too Big. The Maximum Size of File is 1MB");
   return;
 }
 
-if (relativeOneCnicPic.size > 1000000) {
+if (relativeOneCnicPic?.size > 1000000) {
   toast.error("Relative A. CNIC Size is Too Big. The Maximum Size of File is 1MB");
   return;
 }
