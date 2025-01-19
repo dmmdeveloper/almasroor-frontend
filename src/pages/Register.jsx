@@ -3,7 +3,6 @@ import axios from "axios"
 import toast from 'react-hot-toast';
 
 export default function Register() {
-
 const stars = [0,1,2,3,4];
 
 // Form Fields 
@@ -46,39 +45,43 @@ const [ loading , setLoading ] = useState(false);
 
 
 const submit = async  (e)=>{
-
   e.preventDefault();
 
 // Validation
-
-if(!photo) {toast.error("Member Photo is Required")  ; return}
-if(!cnicPic) { toast.error("Memebr Cnic Picture is Required ") ; return }
-if(!relativeOneCnicPic)  { toast.error("RELATIVE A. Cnic is Required :)")  ; return}
-
-
-if(photo?.size>1000000){
-  toast.error("Photo Size is Too Big \n The Maximum Size of File is 1MB")
+if (!photo || !(photo instanceof File)) {
+  toast.error("Member Photo is Required");
   return;
 }
 
-
-if(cnicPic?.size> 1000000){
-  toast.error("Applicant Cnic Size is Too Big \n The Maximum Size of File is 1MB")
-return;
-}
-
-if(relativeOneCnicPic?.size>1000000){
-  toast.error("Relative A. Cnic Size is Too Big \n The Maximum Size of File is 1MB")
+if (!cnicPic || !(cnicPic instanceof File)) {
+  toast.error("Member CNIC Picture is Required");
   return;
 }
 
-
-if(relativeTwoCnicPic?.size>1000000){
-  toast.error("Relative B. Cnic Size is Too Big \n The Maximum Size of File is 1MB")
+if (!relativeOneCnicPic || !(relativeOneCnicPic instanceof File)) {
+  toast.error("Relative A. CNIC is Required :)");
   return;
 }
 
+if (photo.size > 1000000) {
+  toast.error("Photo Size is Too Big. The Maximum Size of File is 1MB");
+  return;
+}
 
+if (cnicPic.size > 1000000) {
+  toast.error("Applicant CNIC Size is Too Big. The Maximum Size of File is 1MB");
+  return;
+}
+
+if (relativeOneCnicPic.size > 1000000) {
+  toast.error("Relative A. CNIC Size is Too Big. The Maximum Size of File is 1MB");
+  return;
+}
+
+if (relativeTwoCnicPic?.size > 1000000) {
+  toast.error("Relative B. CNIC Size is Too Big. The Maximum Size of File is 1MB");
+  return;
+}
 
 
 
@@ -199,6 +202,7 @@ return (<>
 }
 
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , photo, setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
+
 
 const [cnicName , setCnicName] = useState(null)
 
