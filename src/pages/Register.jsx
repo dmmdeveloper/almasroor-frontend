@@ -190,7 +190,7 @@ return (<>
     loading?
 <span className='submit-loading h-[30px] w-[30px] border-halfBlack border-[3px]' ></span>
 :
-<span>Read Terms & Conditions</span>
+<span>Submit</span>
   }
 
   </button>
