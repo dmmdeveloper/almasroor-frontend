@@ -242,3 +242,24 @@ background-repeat: no-repeat;
             transform: translate(0);
   }
 }
+
+
+
+/* rhobmos Shapes in About.jsx */
+
+.rhombus-sahpe{
+  height: 25px;
+  width: 25px;
+  background-color: var(--white-op6);
+  clip-path: polygon(50% 0%, 84% 49%, 50% 100%, 18% 49%);
+}
+
+@media (max-width: 767px) {
+  /* Add your custom styles here */
+  .rhombus-sahpe{
+    height: 25px;
+    width: 25px;
+    clip-path: polygon(50% 22%, 100% 47%, 50% 71%, 0 49%);
+  }
+
+}

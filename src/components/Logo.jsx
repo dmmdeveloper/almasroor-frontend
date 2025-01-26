@@ -1,22 +1,17 @@
 import React from 'react'
 
-export default function Logo({styling}) {
+export default function Logo({}) {
     const stars = [0,1,2,3,4];
-
-
   return (
 <>
-
-<div className="h-[150px]  pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3 md:pt-5 flex-col ">
-
+<div className="h-[90px] pl-5 md:pl-0 md:h-[110px] full select-none md:w-full flex justify-center items-center pt-3  md:pt-5 flex-col ">
 
 {/* stars */}
-
-<div className=" flex items-center  gap-1 relative top-3 ">
+<div key={"Star"} className=" flex items-center  gap-1 relative top-3 ">
 {
     stars.map((_,i)=>{
         return(<>
-        <span  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
+        <span key={Math.random()*999}  className='clipy-star md:h-[25px] md:w-[25px] h-[20px] w-[20px] ' ></span>
         </>)
     })
 }
@@ -29,5 +24,7 @@ export default function Logo({styling}) {
 
 
 </div>
+
+
 </>  )
 }

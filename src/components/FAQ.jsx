@@ -4,6 +4,7 @@ import faqs from "../JSON/faqs.json"
 
 
 export default function FAQ() {
+    
     const [index , setIndex]= useState(null)
   return (<>
   <section className="min-h-screen h-auto bg-black mt-9 w-[90%] md:w-[70%] mx-auto text-white ">

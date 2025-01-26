@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { useEffect } from "react";
 import Register from "./pages/Register";
 import Logo from "./components/Logo";
+import About from "./pages/About";
 
 
 function App(params) {
@@ -18,6 +19,7 @@ return(<>
   <Routes>
 <Route path="/" element = {<Home/>}  /> 
 <Route path="/register" element = {<Register/>} />
+<Route path="/about" element={<About/>} />
 
 
 <Route path="*" element={<NotFound/>} />
