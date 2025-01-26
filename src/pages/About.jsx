@@ -55,8 +55,9 @@ const stars = [1,2,3,4,5]
 
 {/* right Side */}
 <div className="h-auto md:w-1/2 w-full pb-4 flex justify-start items-center  mt-9 md:mt-0 flex-col ">
+
 <figure className='p-1 border-[2px] rounded-full' >
-<img className='md:h-[300px] md:w-[300px] h-[200px] w-[200px] rounded-full' src="https://res.cloudinary.com/dfyfvcrkd/image/upload/v1729413839/al-maroo-hostel/m8wxr78xnihuiunainhg.png" alt="" />
+<img className='md:h-[300px] md:w-[300px] h-[200px] w-[200px] rounded-full' src="https://static.wikia.nocookie.net/the-goon-house/images/7/7d/Ffxjnceu7vf81.png/revision/latest?cb=20240612035502" alt="" />
 </figure>
 <h2 className='text-white text-2xl' >Dost Muhammad</h2>
 <h3 className='text-appYellow text-xl'> Incharge & Developer </h3>
@@ -86,11 +87,7 @@ const stars = [1,2,3,4,5]
 
 <div className=" h-[30%] bg-[rgba(45,45,45,3)] w-full flex justify-center items-center text-[rgba(255,255,255,0.6)]">
     <p><i class="fa-regular fa-copyright"></i> <span>Copyright : almasroorhstl.vercel.app</span> </p>
-
 </div>
-
 </div>
-
-
 </>  )
 }
