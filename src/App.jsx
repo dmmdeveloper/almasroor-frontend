@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Register from "./pages/Register";
 import Logo from "./components/Logo";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 
 function App(params) {
@@ -20,6 +21,7 @@ return(<>
 <Route path="/" element = {<Home/>}  /> 
 <Route path="/register" element = {<Register/>} />
 <Route path="/about" element={<About/>} />
+<Route path="/contact" element ={<Contact/>}/>
 
 
 <Route path="*" element={<NotFound/>} />
