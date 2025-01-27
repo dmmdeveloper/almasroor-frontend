@@ -11,6 +11,7 @@ export default function Footer() {
 
 <div className=" justify-center items-center mx-auto h-full flex gap-3  md:gap-5">
 
+
 <Link target='_blank' to={"https://wa.me/+923193291955"} className="md:h-[45px] md:w-[45px] w-[40px] h-[40px] md:text-[30px] text-[25px] cursor-pointer border-[2px] flex justify-center items-center rounded-full hover:bg-appYellow duration-300"><i class="fa-brands fa-whatsapp"></i></Link>
 
 <Link className="md:h-[45px] md:w-[45px] w-[40px] h-[40px] md:text-[30px] text-[25px]cursor-pointer border-[2px] flex justify-center items-center rounded-full hover:bg-appYellow duration-300"><i class="fa-brands fa-instagram"></i></Link>
@@ -23,7 +24,7 @@ export default function Footer() {
 <Link
   target="_blank"
 //   to={"https://mail.google.com/mail/?view=cm&to=sodhar32@gmail.com"}
-  to={"https://mail.google.com/mail/?view=cm&to=sodhar32@gmail.com"}
+  to={"mailto:sodhar32@gmail.com"}
   className="md:h-[45px] md:w-[45px] w-[40px] h-[40px] md:text-[30px] text-[25px]cursor-pointer border-[2px] flex justify-center items-center rounded-full hover:bg-appYellow duration-300"
 >
   <i className="fa-solid fa-envelope"></i>
@@ -40,7 +41,6 @@ export default function Footer() {
 {/* Copy Right Part */}
 <div className=" h-[30%] bg-[rgba(45,45,45,3)] w-full flex justify-center items-center text-[rgba(255,255,255,0.6)]">
     <p><i class="fa-regular fa-copyright"></i> <span>Copyright : almasroorhstl.vercel.app</span> </p>
-
 </div>
 
 
