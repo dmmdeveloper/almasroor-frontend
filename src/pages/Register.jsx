@@ -122,7 +122,7 @@ formData.append("relative2_contact" ,relative2_contact)
 formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
 
 // https://almasroor-server.vercel.app
-const response =  await axios.post(`https://almasroor-server.vercel.app/member/register` , formData , {
+const response =  await axios.post(`https://almasroor-server786.vercel.app/member/register` , formData , {
   withCredentials : true,
   headers:{
     "Content-Type":"multipart/form-data"

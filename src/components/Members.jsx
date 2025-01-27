@@ -72,8 +72,9 @@ const [members , setMembers] = useState([])
 
 const fetchMembers = async ()=>{
 
+
   try {
-    const response = await axios.get(`https://almasroor-server.vercel.app/member/members`, { withCredentials:true})
+    const response = await axios.get(`https://almasroor-server786.vercel.app/member/register`, { withCredentials:true})
     const data = await response.data;
     console.log(data.data);
     setMembers(data.data)
