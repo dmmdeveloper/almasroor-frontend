@@ -70,6 +70,8 @@ const [members , setMembers] = useState([])
   };
 
 const fetchMembers = async ()=>{
+
+
   try {
     const response = await axios.get(
       `https://almasroor-server786.vercel.app/member/members`
@@ -85,7 +87,6 @@ const fetchMembers = async ()=>{
   }
 }
 
-
 useEffect(()=>{
 fetchMembers()
 },[])
@@ -100,7 +101,7 @@ fetchMembers()
                     return(<>
                        <div key={m?._id} className="md:h-[300px]  h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white  p-1">
                         <figure>
-                            <img className="md:h-[230px] h-[100px] w-full" src={ m?.photo }alt="" />
+                            <img className="md:h-[230px] h-[140px] w-[140px] rounded-md md:w-[230px]" src={ m?.photo }alt="" />
                         </figure>
                         <h2 className="text-center md:font-[600] font-[400] mt-2 text-[16px] md:text-[22px] tex" >{m?.name} </h2>
                         <p className="text-center text-appYellow text-[15px] " >{m?.work_post}</p>

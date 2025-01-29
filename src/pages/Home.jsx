@@ -13,10 +13,6 @@ import { useEffect } from 'react';
 
 
 export default function Home() {
-
-
-
-
   const location = useLocation();
 
   useEffect(() => {
@@ -27,9 +23,6 @@ export default function Home() {
       }
     }
   }, [location]);
-
-
-
 
 
 
