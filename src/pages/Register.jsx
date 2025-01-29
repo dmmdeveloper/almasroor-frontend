@@ -2,9 +2,12 @@ import React, { useRef, useState } from 'react'
 import axios from "axios"
 import toast from 'react-hot-toast';
 import Logo from '../components/Logo';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
 const stars = [0,1,2,3,4];
+
+const navigate = useNavigate()
 
 // Form Fields 
 
@@ -42,12 +45,8 @@ const [ loading , setLoading ] = useState(false);
 
 // files Validation states
 
-
-
-
 const submit = async  (e)=>{
   e.preventDefault();
-
 // Validation
 if (!photo || !(photo instanceof File)) {
   toast.error("Member Photo is Required");
@@ -122,7 +121,11 @@ formData.append("relative2_contact" ,relative2_contact)
 formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
 
 // https://almasroor-server.vercel.app
-const response =  await axios.post(`https://almasroor-server786.vercel.app/member/register` , formData , {
+const response =  await axios.post(
+  `https://almasroor-server786.vercel.app/member/register`
+  // `http://localhost:4000/member/register`
+
+    , formData , {
   withCredentials : true,
   headers:{
     "Content-Type":"multipart/form-data"
@@ -133,6 +136,7 @@ const data = await response.data;
 console.log(data);
 if(data){
   toast.success(`Dear ${data.data.name} You Are Registered Success Fully !!`)
+  navigate("/#members-section")
 
 }
   } catch (error){ 

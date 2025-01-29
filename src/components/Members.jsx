@@ -69,21 +69,22 @@ const [members , setMembers] = useState([])
   
   };
 
-
 const fetchMembers = async ()=>{
-
   try {
-    const response = await axios.get(`https://almasroor-server786.vercel.app/member/members`, { withCredentials:true})
+    const response = await axios.get(
+      `https://almasroor-server786.vercel.app/member/members`
+      // `http://localhost:4000/member/members`
+
+      ,{ withCredentials:true})
     const data = await response.data;
     console.log(data.data);
     setMembers(data.data)
     
   } catch (error) {
     console.log("Memebers are Not Fetched :))" , error);
-    
-    
   }
 }
+
 
 useEffect(()=>{
 fetchMembers()
@@ -91,7 +92,7 @@ fetchMembers()
 
   return (
     <>
-      <div className="pb-[100px]">
+      <section className="pb-[100px]" >
         <div className="slider-container   md:w-[800px]  w-[300px]  mx-auto relative">
           <Slider {...settings}>
             {
@@ -114,7 +115,7 @@ fetchMembers()
 
           </Slider>
         </div>
-      </div>
+      </section>
     </>
   );
 }
