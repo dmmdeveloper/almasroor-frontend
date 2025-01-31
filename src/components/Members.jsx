@@ -71,7 +71,6 @@ const [members , setMembers] = useState([])
 
 const fetchMembers = async ()=>{
 
-
   try {
     const response = await axios.get(
       `https://almasroor-server786.vercel.app/member/members`
@@ -90,7 +89,6 @@ const fetchMembers = async ()=>{
 useEffect(()=>{
 fetchMembers()
 },[])
-
   return (
     <>
       <section className="pb-[100px]" >

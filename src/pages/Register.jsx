@@ -1,10 +1,14 @@
 import React, { useRef, useState } from 'react'
+
 import axios from "axios"
 import toast from 'react-hot-toast';
 import Logo from '../components/Logo';
 import { useNavigate } from 'react-router-dom';
+import { uploadToCloudinary } from '../utils/uploadOnCloudinary.js';
 
 export default function Register() {
+
+
 const stars = [0,1,2,3,4];
 
 const navigate = useNavigate()
@@ -20,6 +24,8 @@ const [cnic , setCnic]  = useState("");
 const [photo , setPhoto] = useState({});
 const [cnicPic , setCnicPic] = useState({});
 // console.log(name , father_name  ,religion , contact , cnic , photo , cnicPic);
+console.log(photo);
+
 
 // Work Data 
 const [post  , setPost] = useState("Student")
@@ -42,10 +48,10 @@ const [relativeTwoCnicPic , setRelative2CnicPic] = useState({})
 // console.log(relative1_name , relative1_relation , relativeOneCnicPic , relativeTwoCnicPic,relative1_contact  , relative2_name , relative2_relation , relative2_contact );
 const [ loading , setLoading ] = useState(false);
 
-
 // files Validation states
 
 const submit = async  (e)=>{
+
   e.preventDefault();
 // Validation
 if (!photo || !(photo instanceof File)) {
@@ -57,51 +63,31 @@ if (!cnicPic || !(cnicPic instanceof File)) {
   toast.error("Member CNIC Picture is Required");
   return;
 }
-
 if (!relativeOneCnicPic || !(relativeOneCnicPic instanceof File)) {
   toast.error("Relative A. CNIC is Required :)");
   return;
 }
-
-if (photo?.size > 1000000) {
-  toast.error("Photo Size is Too Big. The Maximum Size of File is 1MB");
-  return;
-}
-
-if (cnicPic?.size > 1000000) {
-  toast.error("Applicant CNIC Size is Too Big. The Maximum Size of File is 1MB");
-  return;
-}
-
-if (relativeOneCnicPic?.size > 1000000) {
-  toast.error("Relative A. CNIC Size is Too Big. The Maximum Size of File is 1MB");
-  return;
-}
-
-if (relativeTwoCnicPic?.size > 1000000) {
-  toast.error("Relative B. CNIC Size is Too Big. The Maximum Size of File is 1MB");
-  return;
-}
-
-
-
-
-
-  
- try {
-
-
+try {
   setLoading(true)
-const formData = new FormData();
+const photoURL = await uploadToCloudinary(photo);
+const cnicPicURL = await uploadToCloudinary(cnicPic);
+const relativeOneCnicPicURL = await uploadToCloudinary(relativeOneCnicPic); 
+const relativeTwoCnicPicURL =await uploadToCloudinary(relativeTwoCnicPic);
 
-// Applicant Data
+console.log("photo" , photoURL);
+console.log("Cnic" , cnicPicURL);
+console.log("reOneCnic" , relativeOneCnicPicURL);
+console.log("r2CniURL" ,relativeTwoCnicPicURL);
+
+
+const formData = new FormData();
 formData.append("name" , name)
 formData.append("father_name" , father_name)
 formData.append("religion" , religion)
 formData.append("contact" , contact)
 formData.append("cnic" , cnic)
-formData.append("photo" ,photo )
-formData.append("cnicPic", cnicPic)
+formData.append("photo" ,photoURL )
+formData.append("cnicPic", cnicPicURL)
 
 // Work Data 
 formData.append("post", post)
@@ -112,13 +98,13 @@ formData.append("office_contact", office_contact)
 formData.append("relative1_name", relative1_name)
 formData.append("relative1_relation" , relative1_relation)
 formData.append("relative1_contact",relative1_contact )
-formData.append( "relativeOneCnicPic" , relativeOneCnicPic )
+formData.append( "relativeOneCnicPic" , relativeOneCnicPicURL )
 
 // optional
 formData.append("relative2_name" ,relative2_name )  
 formData.append("relative2_relation" , relative2_relation)
 formData.append("relative2_contact" ,relative2_contact)
-formData.append("relativeTwoCnicPic" , relativeTwoCnicPic)
+formData.append("relativeTwoCnicPic" , relativeTwoCnicPicURL)
 
 // https://almasroor-server.vercel.app
 const response =  await axios.post(
@@ -141,10 +127,17 @@ if(data){
 }
   } catch (error){ 
     console.log("Member NoT Registered :)", error);
-    toast.error("Member Not Registered \n Some Thing Went Wrong")
+    if(error.response.data.message){
+      toast(error.response.data.message)
+    }else{
+      console.log(error.response.data.message);
+    }
+    
   }finally{
     setLoading(false)
   }
+
+
 }
 
 return (<>
@@ -152,10 +145,10 @@ return (<>
 <div className="min-h-screen h-auto w-full pb-12 bg-black">
 {/* Logo */}
 
-<Logo/>`
+<Logo/>
 
 <h1 className='text-halfYellow font-arboret  text-center text-2xl md:text-4xl font-[200] uppercase  md:my-4' >registeration form</h1>
-<p className='text-white md:w-[40%] w-[90%] mx-auto' ><span className='text-appYellow' >⚠️ Note:</span> The File Size is Maximum <span className='text-appYellow font-bold' >1MB</span>, if file field is <span className='text-appYellow italic' >vibrate</span> it means the file size is <span className='italic' >geater than 1MB</span>.</p>
+
 
 <form onSubmit={submit} className=" min-h-96 w-[90%] md:w-[550px] font-abhyalibre font-[700] mx-auto border border-halfYellow p-4 rounded-sm text-white mt-4  ">
 
@@ -184,12 +177,11 @@ return (<>
 
 </form>
   </div>
-</>  )
+</>)
 }
 
+
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , photo, setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
-
-
 const [cnicName , setCnicName] = useState(null)
 
     const cnicRef = useRef("");
@@ -233,6 +225,7 @@ const CNICValidation = (cnicInput) => {
 {/* text fields portion  60% */}
 <div className=" w-full md:w-[60%] mt-5">
 
+
 <div className="flex w-full gap-1 items-center mt-2">
   <label
     className="font-abhyalibre grow-0 shrink-0 flex-0  text-[15px]  font-[700]"
@@ -259,7 +252,6 @@ const CNICValidation = (cnicInput) => {
 </div>
 
 <div className="flex w-full gap-1 justify-between items-center mt-2">
-
   <label className='font-abhyalibre  grow-0 shrink-0 flex-0 font-[700] text-[20px] md:text-xl' htmlFor="">Contat No</label>
   <input required  value={contact} onChange={(e)=>setContact(e.target.value)}
   className=" grow bg-black border-b-[1px] border-b-white focus:border-b-2 focus:border-b-white focus:outline-none relative bottom-2 text-white"
@@ -281,7 +273,7 @@ const CNICValidation = (cnicInput) => {
 
 {/* upload Fields */}
 <div key={"Memeber_cnic"} className="mt-2 w-full">
-<div onClick={()=>{ cnicRef.current.click() }} className={`bg-halfBlack w-ful  cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1 ${cnicPic?.size> 1000000 ?"vibrate":""} `}>
+<div onClick={()=>{ cnicRef.current.click() }} className={`bg-halfBlack w-ful  cursor-pointer flex justify-between items-center text-[23px] md:text-xl px-2 md:px-4 hover:opacity-90 rounded-2xl pt-[2px] md:py-1 `}>
 {
   cnicName && cnicPic ?
   (<>
@@ -330,11 +322,10 @@ const CNICValidation = (cnicInput) => {
 {/* file field portion  40% */}
 <div key={"Memeber_photo"} className="  w-full md:w-[40%] flex justify-center items-start md:mt-5 mt-3 md:items-center ">
 
-<div onClick={()=>{ photRef.current.click()}} className={`h-[200px] ${photo?.size > 1000000 ?"vibrate":""} w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 `}>
+<div onClick={()=>{ photRef.current.click()}} className={`h-[200px] w-[150px]  hover:opacity-80 cursor-pointer bg-halfBlack rounded-2xl flex justify-center items-center flex-col gap-2 `}>
 
 {
   photoPreview ? 
-
   <figure>
 <img className='h-[195px] w-[150px]  rounded-2xl' src={photoPreview? photoPreview :""} alt="" />
 </figure>
@@ -344,9 +335,6 @@ const CNICValidation = (cnicInput) => {
 <i class="fa-solid fa-arrow-up-from-bracket text-3xl "></i> 
 </div>
 }
-
-
-
 
 
 
@@ -362,6 +350,7 @@ const CNICValidation = (cnicInput) => {
 }
 
 function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contact , setOfficeContact}) {
+
 
 
   return(<>
@@ -506,7 +495,7 @@ function RelativesData({
             onClick={() => {
               realtive1fileRef.current.click();
             }}
-            className={`md:w-1/2 mt-2  ${relativeOneCnicPic?.size > 1000000 ?"vibrate":""} flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
+            className={`md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
           >
             {cnic1  ? (
               <input
@@ -589,7 +578,7 @@ function RelativesData({
             onClick={() => {
               realtive2fileRef.current.click();
             }}
-            className={`md:w-1/2 mt-2 flex ${relativeTwoCnicPic?.size > 1000000 ?"vibrate":""} w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
+            className={`md:w-1/2 mt-2 flex w-full bg-halfBlack px-2 rounded-2xl items-center justify-between cursor-pointer py-1`}
           >
             {cnic2 ? (
               <input
