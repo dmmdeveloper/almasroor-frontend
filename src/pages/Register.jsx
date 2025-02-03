@@ -180,7 +180,6 @@ return (<>
 </>)
 }
 
-
 function ApplicantData({ name , setName , father_name  , setFatherName , religion , photo, setReligion , contact , setContact ,cnic ,  setCnic ,setPhoto , cnicPic , setCnicPic }) {
 const [cnicName , setCnicName] = useState(null)
 
@@ -407,8 +406,6 @@ function InstitueData({post  ,setPost , work_place , setWorkPlace, office_contac
 }
 
 function RelativesData({ 
-
-
   relative1_name, 
   relative1_relation, 
   relative1_contact, 
