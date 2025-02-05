@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { AppContextProvider } from "./context/Appcontext";
 import Home from "./pages/Home";
 import { useEffect } from "react";
@@ -8,11 +8,29 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 
 
-function App(params) {
+function App() {
+
+
+  const location  = useLocation();
 
   const hello = ()=>{
     alert()
   }
+useEffect(()=>{
+
+  const titles = {
+    "/":" Home | Al Masroor Royal Hostel Larkana",
+    "/about" : "About | Al Masroor Royal Hostel Larkana",
+    "/contact" :"Contact  | Al Masroor Royal Hostel Larkana",
+    "/register" :"Regiter | Al Masroor Royal Hostel Larkana"
+
+  }
+
+ document.title = titles[location.pathname] || "Al Masroor Royal Hostel Larkana"
+
+
+} , [location.pathname])
+
   
 return(<>
 <AppContextProvider value={{hello}} >

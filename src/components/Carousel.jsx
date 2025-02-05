@@ -38,7 +38,7 @@ function Carousel() {
     Aos.init({ duration: 1000 });
     setTimeout(()=>{
       handleNext(); 
-    } , 5000);
+    } , 3000);
   }, []); 
 
 
