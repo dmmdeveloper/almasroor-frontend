@@ -5,7 +5,6 @@ import axios from "axios"
 function NextArrow({ onClick }) {
   return (
     <div
-     
     className="absolute md:h-[40px] h-[25px] w-[25px] md:w-[40px] bg-halfBlack border border-[rgba(255,255,255,0.5)] hover:border-[rgba(255,255,255,1)] rounded-full flex items-center justify-center right-[-10px] md:right-[-20px] md:top-[50%] top-[30%] transform -translate-y-1/2 cursor-pointer z-10"
       onClick={onClick}
     >
@@ -33,7 +32,6 @@ export default function Members() {
 const [members , setMembers] = useState([])
 
   const settings = {
-
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -88,33 +86,73 @@ const fetchMembers = async ()=>{
 
 useEffect(()=>{
 fetchMembers()
-},[])
+},[]);
+
   return (
     <>
       <section className="pb-[100px]" >
         <div className="slider-container   md:w-[800px]  w-[300px]  mx-auto relative">
-          <Slider {...settings}>
-            {
-                members.map((m,i)=>{
-                    return(<>
-                       <div key={m?._id} className="md:h-[300px]  h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white  p-1">
-                        <figure>
-                            <img className="md:h-[230px] h-[140px] w-[140px] rounded-md md:w-[230px]" src={ m?.photo }alt="" />
-                        </figure>
-                        <h2 className="text-center md:font-[600] font-[400] mt-2 text-[16px] md:text-[22px] tex" >{m?.name} </h2>
-                        <p className="text-center text-appYellow text-[15px] " >{m?.work_post}</p>
+        <Slider {...settings}>
+  {members.length > 0 ? (
+    members.map((m) => (
+      <div
+        key={m?._id}
+        className="md:h-[300px] h-[200px] w-[150px] md:w-[270px] bg-halfBlak text-white p-1"
+      >
+        <figure>
+          <img
+            className="md:h-[230px] h-[140px] w-[140px] md:w-[230px] rounded-md"
+            src={m?.photo}
+            alt={m?.name}
+          />
+        </figure>
+        <h2 className="text-center md:font-[600] font-[400] mt-2 text-[16px] md:text-[22px]">
+          {m?.name}
+        </h2>
+        <p className="text-center text-appYellow text-[15px]">{m?.work_post}</p>
+      </div>
+    ))
+  ) : (
+    // Skeleton Loader when data is loading
+    [...Array(4)].map((_, i) => (
+      <div
+        key={i}
+        className="animate-pulse md:h-[300px] h-[200px] w-[150px] md:w-[270px] flex  p-1 rounded-md"
+      >
+        {/* Image Placeholder */}
+        <div className="md:h-[230px] h-[140px] w-[140px] md:w-[230px] bg-[#aa866732] rounded-md"></div>
 
+        {/* Title Placeholder */}
+        <div className="mt-2 md:h-5 h-3 md:w-[70%] w-[80%] mx-auto bg-[#aa866732] rounded"></div>
 
+        {/* Subtitle Placeholder */}
+        <div className="mt-1 md:h-4 h-2 w-[50%] mx-auto bg-[#aa866732]  rounded"></div>
+      </div>
+    ))
+  )}
+</Slider>
 
-            </div>
-                    </>)
-                })
-            }
-         
-
-          </Slider>
         </div>
       </section>
     </>
   );
 }
+
+
+const SkeletonCard = () => {
+  return (
+    <div className="animate-pulse md:h-[300px] h-[200px] w-[150px] md:w-[270px] bg-halfBlak p-1 rounded-md">
+      
+      {/* Image Placeholder */}
+      <div className="md:h-[230px] h-[140px] w-[140px] md:w-[230px] bg-gray-700 rounded-md"></div>
+      
+      {/* Title Placeholder */}
+      <div className="mt-2 h-5 w-[70%] mx-auto bg-gray-600 rounded"></div>
+
+      {/* Subtitle Placeholder */}
+      <div className="mt-1 h-4 w-[50%] mx-auto bg-gray-500 rounded"></div>
+    
+    </div>
+  );
+};
+
